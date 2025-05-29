@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santanu Pal - Publications</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .badge-a-star {
+            background-color: #f6ad55;
+            color: #fff;
+        }
+        .badge-highly-cited {
+            background-color: #48bb78;
+            color: #fff;
+        }
+        .badge-first-author {
+            background-color: #63b3ed;
+            color: #fff;
+        }
+        
+        .publication-list {
+            margin-top: 20px;
+        }
+        .publication-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+        .pub-authors {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .pub-venue {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .pub-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .pub-link:hover {
+            text-decoration: underline;
+        }
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .back-to-home a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .back-to-home a:hover {
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .contact-list li {
+            margin-bottom: 10px;
+        }
+        .contact-list a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: #718096;
+            background-color: #f0f4f8; /* Light blue-gray for footer */
+            border-radius: 6px;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .header {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+            nav {
+                flex-direction: column; /* Stack nav items vertically on small screens */
+                align-items: flex-start;
+                padding: 15px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 15px;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .nav-left {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            .header {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+            .header-title {
+                font-size: 1.75rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container">
+        
+
+        <nav>
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="santanuPal.jpeg" alt="Santanu Pal" class="nav-profile-image">
+                    </a>
+            </div>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publication.html">Publications</a></li>
+                <li><a href="index.html#cv">CV</a></li>
+                <li><a href="index.html#news">News</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+ <section id="publications" class="mb-8">
+            <h2 class="section-title">List of Publications</h2>
+
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'Journals')">Journals</button>
+                <button class="tab-button" onclick="openTab(event, 'Conferences')">Conferences</button>
+                <button class="tab-button" onclick="openTab(event, 'BookChapters')">Book Chapters</button>
+                <button class="tab-button" onclick="openTab(event, 'Thesis')">Thesis</button>
+            </div>
+
+            <div id="Journals" class="tab-content active publication-list">
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Hybrid+Quantum-Classical+Neural+Network+for+Multi-Modal+Multi-Task+Sarcasm,+Emotion+and+Sentiment+Analysis+A.+Phukan,+S.+Pal,+and+A.+Ekbal" target="_blank" rel="noopener noreferrer" class="pub-link">Hybrid Quantum-Classical Neural Network for Multi-Modal Multi-Task Sarcasm, Emotion and Sentiment Analysis</a>
+                        <span class="badge-best-venue">Impact Factor=4.5</span>
+                    </div>
+                    <div class="pub-authors">A. Phukan, S. Pal, and A. Ekbal</div>
+                    <div class="pub-venue">IEEE Transactions on Computational Social Systems, 2024</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Let%27s+All+Laugh+Together:+A+Novel+Multitask+Framework+for+Humor+Detection+in+Internet+Memes+G.+Kumari,+D.+Bandyopadhyay,+A.+Ekbal,+S.+Pal,+A.+Chatterjee,+and+B.+Vinutha" target="_blank" rel="noopener noreferrer" class="pub-link">Let's All Laugh Together: A Novel Multitask Framework for Humor Detection in Internet Memes</a>
+                        <span class="badge-best-venue">Impact Factor=4.5</span>
+                    </div>
+                    <div class="pub-authors">G. Kumari, D. Bandyopadhyay, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha</div>
+                    <div class="pub-venue">IEEE Transactions on Computational Social Systems, 2024</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=HHSD:+Hindi+Hate+Speech+Detection+Leveraging+Multi-Task+Learning+P.+Kapil,+G.+Kumari,+A.+Ekbal,+S.+Pal,+A.+Chatterjee,+and+B.+Vinutha" target="_blank" rel="noopener noreferrer" class="pub-link">HHSD: Hindi Hate Speech Detection Leveraging Multi-Task Learning</a>
+                        <span class="badge-best-venue">Impact Factor=3.5</span>
+                    </div>
+                    <div class="pub-authors">P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha</div>
+                    <div class="pub-venue">IEEE Access, pp. 101460-101473, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=HHLD:+Hateful+posts+Identification+in+Hindi+Language+leveraging+multi+task+learning+P.+Kapil,+G.+Kumari,+A.+Ekbal,+S.+Pal,+A.+Chatterjee,+and+B.+Vinutha" target="_blank" rel="noopener noreferrer" class="pub-link">HHLD: Hateful posts Identification in Hindi Language leveraging multi task learning</a>
+                    <span class="badge-best-venue">Impact Factor=3.5</span>
+                    </div>
+                    <div class="pub-authors">P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha</div>
+                    <div class="pub-venue">IEEE Access, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Multi-modal+estimation+of+cognitive+load+in+post-editing+of+machine+translation+N.+Herbig,+S.+Pal,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Multi-modal estimation of cognitive load in post-editing of machine translation</a>
+                    </div>
+                    <div class="pub-authors">N. Herbig, S. Pal, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">Translation, interpreting, cognition, p. 1, 2021</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Multi-modal+Indicators+for+Estimating+Perceived+Cognitive+Load+in+Post-Editing+of+Machine+Translation+N.+Herbig,+S.+Pal,+M.+Vela,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Multi-modal Indicators for Estimating Perceived Cognitive Load in Post-Editing of Machine Translation</a>
+                    </div>
+                    <div class="pub-authors">N. Herbig, S. Pal, M. Vela, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">Machine Translation Journal, vol. 33, pp. 1-25, 3, 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Discriminating+between+indo-aryan+languages+using+svm+ensembles+A.+M.+Ciobanu,+M.+Zampieri,+S.+Malmasi,+S.+Pal,+and+L.+P.+Dinu" target="_blank" rel="noopener noreferrer" class="pub-link">Discriminating between Indo-Aryan languages using SVM ensembles</a>
+                    </div>
+                    <div class="pub-authors">A. M. Ciobanu, M. Zampieri, S. Malmasi, S. Pal, and L. P. Dinu</div>
+                    <div class="pub-venue">arXiv preprint arXiv:1807.03108, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+neural+approach+to+language+variety+translation+M.+R.+Costa-Jussa,+M.+Zampieri,+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">A neural approach to language variety translation</a>
+                    </div>
+                    <div class="pub-authors">M. R. Costa-Jussa, M. Zampieri, and S. Pal</div>
+                    <div class="pub-venue">arXiv preprint arXiv:1807.00651, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Comparability+of+Corpora+in+Human+and+Machine+Translation+E.+Lapshinova-Koltunski+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">Comparability of Corpora in Human and Machine Translation</a>
+                    </div>
+                    <div class="pub-authors">E. Lapshinova-Koltunski and S. Pal</div>
+                    <div class="pub-venue">2014</div>
+                </div>
+            </div>
+
+            <div id="Conferences" class="tab-content publication-list">
+                <h3 class="year-subsection">2024</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+case+study+on+context-aware+neural+machine+translation+with+multi-task+learning+R.+Appicharla,+B.+Gain,+S.+Pal,+A.+Ekbal,+and+P.+Bhattacharyya" target="_blank" rel="noopener noreferrer" class="pub-link">A case study on context-aware neural machine translation with multi-task learning</a>
+                    </div>
+                    <div class="pub-authors">R. Appicharla, B. Gain, S. Pal, A. Ekbal, and P. Bhattacharyya</div>
+                    <div class="pub-venue">in Proceedings of the 25th Annual Conference of The European Association for Machine Translation, (University of Sheffield, UK), European Association for Machine Translation, 2024</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Findings+of+wmt+2024+shared+task+on+low-resource+indic+languages+translation+P.+Pakray,+S.+Pal,+A.+Vetagiri,+R.+Krishna,+A.+K.+Maji,+S.+Dash,+L.+Laitonjam,+L.+Sarah,+and+R.+Manna" target="_blank" rel="noopener noreferrer" class="pub-link">Findings of WMT 2024 Shared Task on Low-Resource Indic Languages Translation</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">P. Pakray, S. Pal, A. Vetagiri, R. Krishna, A. K. Maji, S. Dash, L. Laitonjam, L. Sarah, and R. Manna</div>
+                    <div class="pub-venue">in Proceedings of the Ninth Conference on Machine Translation, pp. 654-668, 2024</div>
+                </div>
+
+                <h3 class="year-subsection">2023</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=TRAVID:+An+End-to-End+Video+Translation+Framework+P.+K.+Adhikary,+B.+Sugandhi,+S.+Ghimire,+S.+Pal,+and+P.+Pakray" target="_blank" rel="noopener noreferrer" class="pub-link">TRAVID: An End-to-End Video Translation Framework</a>
+                    </div>
+                    <div class="pub-authors">P. K. Adhikary, B. Sugandhi, S. Ghimire, S. Pal, and P. Pakray</div>
+                    <div class="pub-venue">in System Demonstrations, IJCNLP-AACL 2023, (Bali, Indonesia), pp. 1-9, Asian Federation of Natural Language Processing, November 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Findings+of+the+wmt+2023+shared+task+on+low-resource+indic+language+translation+S.+Pal,+P.+Pakray,+S.+R.+Laskar,+L.+Laitonjam,+V.+Khenglawt,+S.+Warjri,+P.+K.+Dadure,+and+S.+K.+Dash" target="_blank" rel="noopener noreferrer" class="pub-link">Findings of the WMT 2023 Shared Task on Low-Resource Indic Language Translation</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, P. Pakray, S. R. Laskar, L. Laitonjam, V. Khenglawt, S. Warjri, P. K. Dadure, and S. K. Dash</div>
+                    <div class="pub-venue">in Proceedings of the Eighth Conference on Machine Translation, pp. 682-694, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=lacs-Irilt:+Machine+translation+for+low-resource+indic+languages+D.+Suman,+A.+Mandal,+S.+Pal,+and+S.+K.+Naskar" target="_blank" rel="noopener noreferrer" class="pub-link">LACS-IRILT: Machine Translation for Low-Resource Indic Languages</a>
+                    </div>
+                    <div class="pub-authors">D. Suman, A. Mandal, S. Pal, and S. K. Naskar</div>
+                    <div class="pub-venue">in Proceedings of the Eighth Conference on Machine Translation, pp. 972-977, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Team_Hawk+at+WASSA+2023+Empathy,+Emotion,+and+Personality+Shared+Task:+Multi-tasking+Multi-encoder+based+transformers+for+Empathy+and+Emotion+Prediction+in+Conversations+A.+S.+Srinivas,+N.+Barua,+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">Team_Hawk at WASSA 2023 Empathy, Emotion, and Personality Shared Task: Multi-tasking Multi-encoder based transformers for Empathy and Emotion Prediction in Conversations</a>
+                    </div>
+                    <div class="pub-authors">A. S. Srinivas, N. Barua, and S. Pal</div>
+                    <div class="pub-venue">in Proceedings of the 13th Workshop on Computational Approaches to Subjectivity, Sentiment, & Social Media Analysis, pp. 542-547, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+case+study+on+context+encoding+in+multi-encoder+based+document-level+neural+machine+translation+R.+Appicharla,+B.+Gain,+S.+Pal,+and+A.+Ekbal" target="_blank" rel="noopener noreferrer" class="pub-link">A case study on context encoding in multi-encoder based document-level neural machine translation</a>
+                    </div>
+                    <div class="pub-authors">R. Appicharla, B. Gain, S. Pal, and A. Ekbal</div>
+                    <div class="pub-venue">in Proceedings of Machine Translation Summit XIX: Research Track, 2023</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Zombies+eat+brains,+you+are+safe:+A+knowledge+infusion+based+multitasking+system+for+sarcasm+detection+in+meme+D.+Bandyopadhyay,+G.+Kumari,+A.+Ekbal,+S.+Pal,+A.,+Chatterjee,+and+V.+BN" target="_blank" rel="noopener noreferrer" class="pub-link">Zombies eat brains, you are safe: A knowledge infusion based multitasking system for sarcasm detection in meme</a>
+                    </div>
+                    <div class="pub-authors">D. Bandyopadhyay, G. Kumari, A. Ekbal, S. Pal, A., Chatterjee, and V. BN</div>
+                    <div class="pub-venue">in ECIR 2023: European Conference on Information Retrieval, (Dublin, Ireland), p. Accepted, 2023</div>
+                </div>
+
+                <h3 class="year-subsection">2021</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Findings+of+the+2021+conference+on+machine+translation+(wmt21)+F.+Akhbardeh,+A.+Arkhangorodsky,+M.+Biesialska,+O.+Bojar,+R.+Chatterjee,+V.+Chaudhary,+M.+R.+Costa-juss%C3%A0,+C.+Espa%C3%B1a-Bonet,+A.+Fan,+C.+Federmann,+et+al." target="_blank" rel="noopener noreferrer" class="pub-link">Findings of the 2021 Conference on Machine Translation (WMT21)</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">F. Akhbardeh, A. Arkhangorodsky, M. Biesialska, O. Bojar, R. Chatterjee, V. Chaudhary, M. R. Costa-jussà, C. España-Bonet, A. Fan, C. Federmann, et al.</div>
+                    <div class="pub-venue">in Proceedings of the Sixth Conference on Machine Translation, pp. 1-88, 2021</div>
+                </div>
+
+                <h3 class="year-subsection">2020</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=The+Transference+Architecture+for+Automatic+Post-Editing+S.+Pal,+H.+Xu,+N.+Herbig,+S.+K.+Naskar,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">The Transference Architecture for Automatic Post-Editing</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, H. Xu, N. Herbig, S. K. Naskar, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of COLING 2020, the 27th International Conference on Computational Linguistics: Technical Papers, (Barcelona, Spain), pp. 5963-5974, December 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=MMPE:+A+Multi-Modal+Interface+for+Post-Editing+Machine+Translation+N.+Herbig,+T.+D%C3%BCwel,+S.+Pal,+K.+Meladaki,+M.+Monshizadeh,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">MMPE: A Multi-Modal Interface for Post-Editing Machine Translation</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">N. Herbig, T. Düwel, S. Pal, K. Meladaki, M. Monshizadeh, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, (Online), pp. 1691-1702, Association for Computational Linguistics, July 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=MMPE:+A+Multi-Modal+Interface+using+Handwriting,+Touch+Reordering,+and+Speech+Commands+for+Post-Editing+Machine+Translation+N.+Herbig,+S.+Pal,+T.+D%C3%BCwel,+K.+Meladaki,+M.+Monshizadeh,+V.+Hnatovskiy,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">MMPE: A Multi-Modal Interface using Handwriting, Touch Reordering, and Speech Commands for Post-Editing Machine Translation</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">N. Herbig, S. Pal, T. Düwel, K. Meladaki, M. Monshizadeh, V. Hnatovskiy, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations, (Online), pp. 327-334, Association for Computational Linguistics, July 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Findings+of+the+2020+Conference+on+Machine+Translation+(WMT20)+L.+Barrault,+M.+Biesialska,+O.+Bojar,+M.+R.+Costa-juss%C3%A0,+C.+Federmann,+Y.+Graham,+R.+Grundkiewicz,+B.+Haddow,+M.+Huck,+E.+Joanis,+T.+Kocmi,+P.+Koehn,+C.-k.+Lo,+N.+Ljube%C5%A1i%C4%87,+C.+Monz,+M.+Morishita,+M.+Nagata,+T.+Nakazawa,+S.+Pal,+M.+Post,+and+M.+Zampieri" target="_blank" rel="noopener noreferrer" class="pub-link">Findings of the 2020 Conference on Machine Translation (WMT20)</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">L. Barrault, M. Biesialska, O. Bojar, M. R. Costa-jussà, C. Federmann, Y. Graham, R. Grundkiewicz, B. Haddow, M. Huck, E. Joanis, T. Kocmi, P. Koehn, C.-k. Lo, N. Ljubešić, C. Monz, M. Morishita, M. Nagata, T. Nakazawa, S. Pal, M. Post, and M. Zampieri</div>
+                    <div class="pub-venue">in Proceedings of the Fifth Conference on Machine Translation, (Online), pp. 1-55, Association for Computational Linguistics, November 2020</div>
+                </div>
+
+                <h3 class="year-subsection">2019</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Improving+CAT+tools+in+the+translation+workflow:+New+approaches+and+evaluation+M.+Vela,+S.+Pal,+M.+Zampieri,+S.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Improving CAT tools in the translation workflow: New approaches and evaluation</a>
+                    </div>
+                    <div class="pub-authors">M. Vela, S. Pal, M. Zampieri, S. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of Machine Translation Summit XVII Volume 2: Translator, Project and User Tracks, (Dublin, Ireland), pp. 8-15, European Association for Machine Translation, 19-23 Aug. 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Findings+of+the+2019+conference+on+machine+translation+(wmt19)+L.+Barrault,+O.+Bojar,+M.+R.+Costa-juss%C3%A0,+C.+Federmann,+M.+Fishel,+Y.+Graham,+B.+Haddow,+M.+Huck,+P.+Koehn,+S.+Malmasi,+C.+Monz,+M.+M%C3%BCller,+S.+Pal,+M.+Post,+and+M.+Zampieri" target="_blank" rel="noopener noreferrer" class="pub-link">Findings of the 2019 Conference on Machine Translation (WMT19)</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">L. Barrault, O. Bojar, M. R. Costa-jussà, C. Federmann, M. Fishel, Y. Graham, B. Haddow, M. Huck, P. Koehn, S. Malmasi, C. Monz, M. Müller, S. Pal, M. Post, and M. Zampieri</div>
+                    <div class="pub-venue">in Proceedings of the Fourth Conference on Machine Translation, (Florence, Italy), pp. 128-188, Association for Computational Linguistics, August 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Multi-modal+approaches+for+post-editing+machine+translation+N.+Herbig,+S.+Pal,+J.+van+Genabith,+and+A.+Kr%C3%BCger" target="_blank" rel="noopener noreferrer" class="pub-link">Multi-modal approaches for post-editing machine translation</a>
+                    </div>
+                    <div class="pub-authors">N. Herbig, S. Pal, J. van Genabith, and A. Krüger</div>
+                    <div class="pub-venue">in Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems, pp. 231-240, ACM, 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Ju-saarland+submission+to+the+wmt2019+english-gujarati+translation+shared+task+R.+Mondal,+S.+R.+Nayek,+A.+Chowdhury,+S.+Pal,+S.+K.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">JU-Saarland Submission to the WMT2019 English-Gujarati Translation Shared Task</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">R. Mondal, S. R. Nayek, A. Chowdhury, S. Pal, S. K. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the Fourth Conference on Machine Translation, (Florence, Italy), pp. 507-512, Association for Computational Linguistics, August 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Usaar-dfki+-+the+transference+architecture+for+english-german+automatic+post-editing+S.+Pal,+H.+Xu,+N.+Herbig,+A.+Kr%C3%BCger,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">USAAR-DFKI - The Transference Architecture for English-German Automatic Post-Editing</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, H. Xu, N. Herbig, A. Krüger, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the Fourth Conference on Machine Translation, (Florence, Italy), pp. 822-829, Association for Computational Linguistics, August 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Uds-dfki+submission+to+the+wmt2019+czech-polish+similar+language+translation+shared+task+S.+Pal,+M.+Zampieri,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">UDS-DFKI Submission to the WMT2019 Czech-Polish Similar Language Translation Shared Task</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, M. Zampieri, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the Fourth Conference on Machine Translation, (Florence, Italy), pp. 917-921, Association for Computational Linguistics, August 2019</div>
+                </div>
+
+                <h3 class="year-subsection">2018</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+deep+learning+based+approach+to+transliteration+S.+Kundu,+S.+Paul,+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">A Deep Learning based Approach to Transliteration</a>
+                    </div>
+                    <div class="pub-authors">S. Kundu, S. Paul, and S. Pal</div>
+                    <div class="pub-venue">in Proceedings of the Seventh Named Entities Workshop, pp. 79-83, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Keep+it+or+not:+Word+level+quality+estimation+for+post-editing+P.+Basu,+S.+Pal,+and+S.+K.+Naskar" target="_blank" rel="noopener noreferrer" class="pub-link">Keep it or not: Word level quality estimation for post-editing</a>
+                    </div>
+                    <div class="pub-authors">P. Basu, S. Pal, and S. K. Naskar</div>
+                    <div class="pub-venue">in Proceedings of the Third Conference on Machine Translation: Shared Task Papers, pp. 759-764, 2018</div>
+                </div>
+
+                <h3 class="year-subsection">2017</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Multi-source+Neural+Automatic+Post-Editing:+FBK%27s+participation+in+the+WMT+2017+APE+shared+task+R.+Chatterjee,+M.+A.+Farajian,+M.+Negri,+M.+Turchi,+A.+Srivastava,+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">Multi-source Neural Automatic Post-Editing: FBK's participation in the WMT 2017 APE shared task</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">R. Chatterjee, M. A. Farajian, M. Negri, M. Turchi, A. Srivastava, and S. Pal</div>
+                    <div class="pub-venue">in Proceedings of the Second Conference on Machine Translation, pp. 630-638, 2017</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Neural+automatic+post-editing+using+prior+alignment+and+reranking+S.+Pal,+S.+K.+Naskar,+M.+Vela,+Q.+Liu,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Neural Automatic Post-Editing using Prior Alignment and Reranking</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, M. Vela, Q. Liu, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 2, Short Papers, vol. 2, pp. 349-355, 2017</div>
+                </div>
+
+                <h3 class="year-subsection">2016</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Multi-Engine+and+Multi-Alignment+Based+Automatic+Post-Editing+and+its+Impact+on+Translation+Productivity+S.+Pal,+S.+K.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Multi-Engine and Multi-Alignment Based Automatic Post-Editing and its Impact on Translation Productivity</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers, (Osaka, Japan), pp. 2559-2570, December 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=CATaLog+Online:+A+Web-based+CAT+Tool+for+Distributed+Translation+with+Data+Capture+for+APE+and+Translation+Process+Research+S.+Pal,+S.+K.+Naskar,+M.+Zampieri,+T.+Nayak,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">CATaLog Online: A Web-based CAT Tool for Distributed Translation with Data Capture for APE and Translation Process Research</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, M. Zampieri, T. Nayak, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: System Demonstrations, (Osaka, Japan), pp. 98-102, December 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+Neural+Network+based+Approach+to+Automatic+Post-Editing+S.+Pal,+S.+K.+Naskar,+M.+Vela,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">A Neural Network based Approach to Automatic Post-Editing</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, M. Vela, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers), (Berlin, Germany), pp. 281-286, August 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=USAAR:+An+Operation+Sequential+Model+for+Automatic+Statistical+Post-Editing+S.+Pal,+M.+Zampieri,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">USAAR: An Operation Sequential Model for Automatic Statistical Post-Editing</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, M. Zampieri, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the First Conference on Machine Translation, (Berlin, Germany), pp. 759-763, August 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=JU-USAAR:+A+Domain+Adaptive+MT+System.+K.+Pahari,+A.+Kuila,+S.+Pal,+S.+K.+Naskar,+S.+Bandyopadhyay,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">JU-USAAR: A Domain Adaptive MT System.</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">K. Pahari, A. Kuila, S. Pal, S. K. Naskar, S. Bandyopadhyay, and J. van Genabith</div>
+                    <div class="pub-venue">in WMT, pp. 442-448, 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=CATaLog+Online:+Porting+a+Post-editing+Tool+to+the+Web+S.+Pal,+M.+Zampieri,+S.+K.+Naskar,+T.+Nayak,+M.+Vela,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">CATaLog Online: Porting a Post-editing Tool to the Web</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, M. Zampieri, S. K. Naskar, T. Nayak, M. Vela, and J. van Genabith</div>
+                    <div class="pub-venue">in Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016), pp. 599-604, May 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Beyond+Translation+Memories:+Generating+Translation+Suggestions+based+on+Parsing+and+POS+Tagging+T.+Nayak,+S.+Pal,+N.+Sudip,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Beyond Translation Memories: Generating Translation Suggestions based on Parsing and POS Tagging</a>
+                    </div>
+                    <div class="pub-authors">T. Nayak, S. Pal, N. Sudip, and J. van Genabith</div>
+                    <div class="pub-venue">in 2nd Workshop on Natural Language Processing for Translation Memories (NLP4TM 2016), pp. 12-20, 2016</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Forest+to+String+Based+Statistical+Machine+Translation+with+Hybrid+Word+Alignments+S.+Pal,+S.+K.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Forest to String Based Statistical Machine Translation with Hybrid Word Alignments</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in 17th International Conference on Intelligent Text Processing and Computational Linguistics, Springer, 2016</div>
+                </div>
+
+                <h3 class="year-subsection">2015</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Statistical+Automatic+Post+Editing+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">Statistical Automatic Post Editing</a>
+                    </div>
+                    <div class="pub-authors">S. Pal</div>
+                    <div class="pub-venue">in The Proceedings of the EXPERT Scientific and Technological workshop, 2015</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Catalog:+New+approaches+to+tm+and+post+editing+interfaces+T.+Nayek,+S.+K.+Naskar,+S.+Pal,+M.+Zampieri,+M.+Vela,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Catalog: New approaches to TM and Post Editing Interfaces</a>
+                    </div>
+                    <div class="pub-authors">T. Nayek, S. K. Naskar, S. Pal, M. Zampieri, M. Vela, and J. van Genabith</div>
+                    <div class="pub-venue">RANLP 2015, p. 36, 2015</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=UdS-Sant:+English-German+Hybrid+Machine+Translation+System.+S.+Pal,+S.+K.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">UDS-Sant: English-German Hybrid Machine Translation System.</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in WMT@ EMNLP, pp. 152-157, 2015</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=USAAR-SAPE:+An+English-Spanish+Statistical+Automatic+Post-Editing+System.+S.+Pal,+M.+Vela,+S.+K.+Naskar,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">USAAR-SAPE: An English-Spanish Statistical Automatic Post-Editing System.</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, M. Vela, S. K. Naskar, and J. van Genabith</div>
+                    <div class="pub-venue">in WMT@ EMNLP, pp. 216-221, 2015</div>
+                </div>
+
+                <h3 class="year-subsection">2014</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Manawi:+Using+Multi-Word+Expressions+and+Named+Entities+to+Improve+Machine+Translation.+L.+Tan+and+S.+Pal" target="_blank" rel="noopener noreferrer" class="pub-link">Manawi: Using Multi-Word Expressions and Named Entities to Improve Machine Translation.</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">L. Tan and S. Pal</div>
+                    <div class="pub-venue">in WMT@ ACL, pp. 201-206, 2014</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Word+Alignment-Based+Reordering+of+Source+Chunks+in+PB-SMT+S.+Pal,+S.+K.+Naskar,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Word Alignment-Based Reordering of Source Chunks in PB-SMT</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC-2014), European Language Resources Association (ELRA), 2014</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Automatic+Building+and+Using+Parallel+Resources+for+SMT+from+Comparable+Corpora.+S.+Pal,+P.+Pakray,+S.+K.+Naskar,+et+al." target="_blank" rel="noopener noreferrer" class="pub-link">Automatic Building and Using Parallel Resources for SMT from Comparable Corpora.</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, P. Pakray, S. K. Naskar, et al.</div>
+                    <div class="pub-venue">in HyTra@ EACL, pp. 48-57, 2014</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=USAAR-DCU+Hybrid+Machine+Translation+System+for+ICON+2014+S.+Pal,+A.+Srivastava,+S.+Dandapat,+J.+V.+Genabith,+and+A.+Way" target="_blank" rel="noopener noreferrer" class="pub-link">USAAR-DCU Hybrid Machine Translation System for ICON 2014</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, A. Srivastava, S. Dandapat, J. V. Genabith, and A. Way</div>
+                    <div class="pub-venue">in ICON-2014: 11th International Conference on Natural Language Processing, 2014</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Role+of+Paraphrases+in+PB-SMT+S.+Pal,+P.+Lohar,+and+S.+K.+Naskar" target="_blank" rel="noopener noreferrer" class="pub-link">Role of Paraphrases in PB-SMT</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, P. Lohar, and S. K. Naskar</div>
+                    <div class="pub-venue">in Computational Linguistics and Intelligent Text Processing, pp. 242-253, Springer Berlin Heidelberg, 2014</div>
+                </div>
+
+                <h3 class="year-subsection">2013</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Impact+of+Linguistically+Motivated+Shallow+Phrases+in+PB-SMT+S.+Pal,+M.+Hasanuzzaman,+S.+K.+Naskar,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Impact of Linguistically Motivated Shallow Phrases in PB-SMT</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, M. Hasanuzzaman, S. K. Naskar, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in ICON 2013, 2013</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Improving+mt+system+using+extracted+parallel+fragments+of+text+from+comparable+corpora+R.+Gupta,+S.+Pal,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Improving MT system using extracted parallel fragments of text from comparable corpora</a>
+                    </div>
+                    <div class="pub-authors">R. Gupta, S. Pal, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in proceedings of 6th workshop of Building and Using Comparable Corpora (BUCC), ACL, Sofia, Bulgaria, pp. 69-76, 2013</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+Hybrid+Word+Alignment+Model+for+Phrase-Based+Statistical+Machine+Translation+S.+Pal,+S.+K.+Naskar,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">A Hybrid Word Alignment Model for Phrase-Based Statistical Machine Translation</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in Proceedings of the Second Workshop on Hybrid Approaches to Translation, pp. 94-101, Association for Computational Linguistics, 2013</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=MWE+Alignment+in+Phrase+Based+Statistical+Machine+Translation+S.+Pal,+S.+K.+Naskar,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">MWE Alignment in Phrase Based Statistical Machine Translation</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in Proceedings of the XIV Machine Translation Summit, pp. 61-68, 2013</div>
+                </div>
+
+                <h3 class="year-subsection">2011</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Handling+Multiword+Expressions+in+Phrase-Based+Statistical+Machine+Translation+S.+Pal,+T.+Chakraborty,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Handling Multiword Expressions in Phrase-Based Statistical Machine Translation</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, T. Chakraborty, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in In Proceedings of the 13th Machine Translation Summit, pp. 215-224, MT Summit 2011, 2011</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Rule+Based+Plagiarism+Detection+using+Information+Retrieval+A.+Ghosh,+P.+Bhaskar,+S.+Pal,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Rule Based Plagiarism Detection using Information Retrieval</a>
+                    </div>
+                    <div class="pub-authors">A. Ghosh, P. Bhaskar, S. Pal, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in Petras et al, 2011</div>
+                </div>
+
+                <h3 class="year-subsection">2010</h3>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Qgstec+system+description-JUQGG:+A+rule+based+approach+S.+Pal,+T.+Mondal,+P.+Pakray,+D.+Das,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Qgstec system description-JUQGG: A rule based approach</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, T. Mondal, P. Pakray, D. Das, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">Boyer & Piwek (2010), pp. 76-79, 2010</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=JU_CSE_TE:+System+Description+QA@+CLEF+2010-ResPubliQA.+P.+Pakray,+P.+Bhaskar,+S.+Pal,+D.+Das,+S.+Bandyopadhyay,+and+A.+F.+Gelbukh" target="_blank" rel="noopener noreferrer" class="pub-link">JU_CSE_TE: System Description QA@ CLEF 2010-ResPubliQA.</a>
+                    </div>
+                    <div class="pub-authors">P. Pakray, P. Bhaskar, S. Pal, D. Das, S. Bandyopadhyay, and A. F. Gelbukh</div>
+                    <div class="pub-venue">in CLEF (Notebook Papers/LABs/Workshops), 2010</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=JU_CSE_TAC:+Textual+Entailment+Recognition+System+at+TAC+RTE-6.+P.+Pakray,+S.+Pal,+S.+Poria,+S.+Bandyopadhyay,+and+A.+F.+Gelbukh" target="_blank" rel="noopener noreferrer" class="pub-link">JU_CSE_TAC: Textual Entailment Recognition System at TAC RTE-6.</a>
+                    </div>
+                    <div class="pub-authors">P. Pakray, S. Pal, S. Poria, S. Bandyopadhyay, and A. F. Gelbukh</div>
+                    <div class="pub-venue">in TAC, 2010</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Handling+Named+Entities+and+Compound+Verbs+in+Phrase-Based+Statistical+Machine+Translation+S.+Pal,+S.+K.+Naskar,+P.+Pecina,+S.+Bandyopadhyay,+and+A.+Way" target="_blank" rel="noopener noreferrer" class="pub-link">Handling Named Entities and Compound Verbs in Phrase-Based Statistical Machine Translation</a> <span class="badge-starred-venue">*</span>
+                    </div>
+                    <div class="pub-authors">S. Pal, S. K. Naskar, P. Pecina, S. Bandyopadhyay, and A. Way</div>
+                    <div class="pub-venue">in MWE workshop, 23rd International Conference of Computational Linguistics (Coling 2010), Beijing, Chaina, pp. 46-54, 2010</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Automatic+Extraction+of+Complex+Predicates+in+Bengali+D.+Das,+S.+Pal,+T.+Mondal,+T.+Chakraborty,+and+S.+Bandyopadhyay" target="_blank" rel="noopener noreferrer" class="pub-link">Automatic Extraction of Complex Predicates in Bengali</a>
+                    </div>
+                    <div class="pub-authors">D. Das, S. Pal, T. Mondal, T. Chakraborty, and S. Bandyopadhyay</div>
+                    <div class="pub-venue">in MWE workshop, The 23rd International conference of computational linguistics (Coling 2010), Beijing, Chaina, pp. 37-46, 2010</div>
+                </div>
+            </div>
+
+            
+
+
+            <div id="BookChapters" class="tab-content publication-list">
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Mining+Parallel+Resources+for+Machine+Translation+from+Comparable+Corpora+S.+Pal,+P.+Pakray,+A.+Gelbukh,+and+J.+van+Genabith" target="_blank" rel="noopener noreferrer" class="pub-link">Mining Parallel Resources for Machine Translation from Comparable Corpora</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, P. Pakray, A. Gelbukh, and J. van Genabith</div>
+                    <div class="pub-venue">pp. 534-544. Springer International Publishing, 2015</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Role+of+Paraphrases+in+PB-SMT+S.+Pal,+P.+Lohar,+and+S.+K.+Naskar" target="_blank" rel="noopener noreferrer" class="pub-link">Role of Paraphrases in PB-SMT</a>
+                    </div>
+                    <div class="pub-authors">S. Pal, P. Lohar, and S. K. Naskar</div>
+                    <div class="pub-venue">in Computational Linguistics and Intelligent Text Processing, pp. 242-253, Springer Berlin Heidelberg, 2014</div>
+                </div>
+            </div>
+
+            <div id="Thesis" class="tab-content publication-list">
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=A+Hybrid+Machine+Translation+Framework" target="_blank" rel="noopener noreferrer" class="pub-link">A Hybrid Machine Translation Framework</a>
+                    </div>
+                    <div class="pub-authors">S. Pal</div>
+                    <div class="pub-venue">PhD Thesis, Saarland University, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">
+                        <a href="https://scholar.google.com/scholar?q=Hybrid+word+alignment+S.+Pal,+and+S.+K.+Naskar" target="_blank" rel="noopener noreferrer" class="pub-link">Improved Word Alignment</a>
+                    </div>
+                    <div class="pub-authors">S. Pal</div>
+                    <div class="pub-venue">Master's Thesis, Jadavpur University, 2016</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2024 Santanu Pal. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tab-content" and hide them
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tab-button" and remove the class "active"
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Automatically open the first tab on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tab-buttons .tab-button").click();
+        });
+    </script>
+</body>
+</html>
