@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santanu Pal - Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global resets and box-sizing for better responsiveness */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Light background */
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%; /* Ensure it takes full width on small screens */
+            max-width: 960px; /* Limit width on larger screens */
+            margin: 40px auto;
+            padding: 20px; /* Default padding for larger screens */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #e0f2fe; /* Light blue background for header */
+            border-radius: 8px 8px 0 0; /* Rounded top corners */
+            margin-top: -20px; /* Adjust to align with container top */
+            margin-left: -20px; /* Adjust to align with container left */
+            margin-right: -20px; /* Adjust to align with container right */
+        }
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        nav {
+            background-color: #f0f4f8; /* Light blue-gray for nav */
+            padding: 15px 20px; /* Adjusted padding for image */
+            border-radius: 6px;
+            margin-bottom: 30px;
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Vertically center items */
+            justify-content: space-between; /* Space out items */
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+        .nav-profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #3b82f6; /* Accent border */
+            margin-right: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1; /* Allow ul to take available space */
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #3b82f6; /* Accent color */
+        }
+        nav a.active {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 2px;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .project-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        .project-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+        .project-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .project-meta strong {
+            color: #000;
+        }
+        .project-description ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding: 0;
+        }
+        .project-description li {
+            margin-bottom: 5px;
+        }
+        .project-achievements {
+            font-style: italic;
+            color: #4a5568;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: #718096;
+            background-color: #f0f4f8; /* Light blue-gray for footer */
+            border-radius: 6px;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .header {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+            nav {
+                flex-direction: column; /* Stack nav items vertically on small screens */
+                align-items: flex-start;
+                padding: 15px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 15px;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .nav-left {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            .header {
+                font-size: 1.75rem;
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .project-item h3 {
+                font-size: 1.3em;
+            }
+            .project-meta {
+                font-size: 0.85em;
+            }
+            .project-description ul {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header-title">My Projects</h1>
+        </header>
+
+        <nav>
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="santanuPal.jpeg" alt="Santanu Pal" class="nav-profile-image">
+                    </a>
+            </div>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publication.html">Publications</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="index.html#cv">CV</a></li>
+                <li><a href="index.html#news">News</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="projects" class="mb-8">
+            <h2 class="section-title">Key Projects</h2>
+
+            <div class="project-item">
+                <h3>ZenifyPro: Personalized Persuasion Engine for Health Care</h3>
+                <p class="project-meta"><strong>Duration:</strong> January 2024 - Present | <strong>Technologies:</strong> Python, PyTorch, Reinforcement Learning</p>
+                <div class="project-description">
+                    <ul>
+                        <li>Developing an end-to-end system for generating persuasive notifications for Sleeping Disorder patients.</li>
+                        <li>Utilized LLM, Langchain for notification generation.</li>
+                        <li>Used prompt engineering, in-context learning, chain-of-thought.</li>
+                        <li>Designed algorithms for on-board persuasion strategy adaptation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>SCOPE-API: Skill Extraction from Job Description and CV</h3>
+                <p class="project-meta"><strong>Duration:</strong> August 2023 - March 2024 | <strong>Technologies:</strong> Python, PyTorch, Flask, SpaCy, Hugging Face</p>
+                <div class="project-description">
+                    <ul>
+                        <li>Built a Skill extraction API for a talent match engine.</li>
+                        <li>Implemented pre-trained transformer models using Hugging Face.</li>
+                        <li>The API is currently being deployed on an Azure-based cloud platform.</li>
+                    </ul>
+                </div>
+                <p class="project-achievements"><strong>Achievements:</strong> The model outperforms GPT-4. It is used internally by the talent search team. A patent has been filed.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>LUCIFER: Fake News Verification and Explanation Generation</h3>
+                <p class="project-meta"><strong>Duration:</strong> August 2022 - July 2023 | <strong>Technologies:</strong> Python, PyTorch, Hugging Face, Meta learning</p>
+                <div class="project-description">
+                    <ul>
+                        <li>Built a domain-agnostic real-time fake news verification and explanation system.</li>
+                        <li>Implemented pre-trained transformer models using Hugging Face.</li>
+                        <li>Implemented meta-curriculum learning for generalization across domains and few-shot adaptation.</li>
+                        <li>The API is currently being deployed on an Azure-based cloud platform.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>EXCLAIM: Meme role labelling and explanation generation</h3>
+                <p class="project-meta"><strong>Duration:</strong> August 2021 - July 2022 | <strong>Technologies:</strong> Python, PyTorch, OCR, Hugging Face, OpenCV</p>
+                <div class="project-description">
+                    <ul>
+                        <li>Built a multimodal meme explanation system to detect and label Hero, Villain, and Victim roles in harmful memes.</li>
+                        <li>Generate explanations for the actions of each role within the meme.</li>
+                        <li>Implemented a pipeline process using OpenCV, OCR, natural language understanding, and caption generation from images, validated with OCR and pre-trained transformer models from Hugging Face for explanation generation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>Other Projects (Industry-Academia collaboration)</h3>
+                <p class="project-meta"><strong>Duration:</strong> March 2020 - July 2022 | <strong>Technologies:</strong> Python, PyTorch, Hugging Face</p>
+                <div class="project-description">
+                    <ul>
+                        <li>Hate Speech detection, Normalization and Diffusion.</li>
+                        <li>Document level Machine Translation.</li>
+                        <li>Lecture Video translation.</li>
+                    </ul>
+                </div>
+                <p class="project-achievements"><strong>Achievement:</strong> One A and three A-level research publications.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Postdoc Projects</h3>
+                <p class="project-meta"><strong>Duration:</strong> February 2017 - February 2020 | <strong>Technologies:</strong> Python, PyTorch, Transformers</p>
+                <div class="project-description">
+                    <ul>
+                        <li>MMPE: Multi-modal and Language Technology Based Post-Editing Support for Machine Translation" sponsored by the German Research Foundation (DFG) (Saarland University, Germany).</li>
+                        <li>DEEPLE: Deep Learning for Language Technology End-to-End Applications (German Research Foundation for Artificial Intelligence (DFKI), SB, Germany).</li>
+                        <li>APE++: Neural Automatic Post-Editing (German Research Foundation for Artificial Intelligence (DFKI), SB, Germany).</li>
+                    </ul>
+                </div>
+                <p class="project-achievements"><strong>Achievements:</strong> Four A research publications for MMPE, and one A and two A-level research publications for DEEPLE.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2024 Santanu Pal. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
