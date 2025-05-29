@@ -269,3 +269,45 @@ body {
             padding-bottom: 5px;
         }
 
+.skill-category {
+            margin-bottom: 30px;
+        }
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        .skill-item {
+            display: grid;
+            grid-template-columns: 1fr auto 2fr; /* Name, Stars, Applied In */
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+        .skill-name {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: flex-end; /* Align stars to the right */
+        }
+        .star-icon {
+            width: 20px;
+            height: 20px;
+            fill: #f6ad55; /* Gold color for stars */
+            margin-left: 2px;
+        }
+        .skill-applied-in {
+            font-size: 0.9rem;
+            color: #718096;
+            text-align: left; /* Align description to the left */
+        }
