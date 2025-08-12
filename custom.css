@@ -1,197 +1,249 @@
-/* * MOBILE-FIRST STYLES: These are the base styles that apply to all devices.
- * They are optimized for small screens by default.
+/* * 1. Global CSS Variables & Dark Mode Theme 
+ * These variables are defined at the root and can be toggled by adding the 'dark-mode' class to the body.
+ */
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #1a202c;
+    --secondary-text: #4a5568;
+    --link-color: #4c51bf;
+    --border-color: #e2e8f0;
+    --nav-bg: #ffffff;
+    --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --footer-bg: #f0f4f8;
+}
+
+.dark-mode {
+    --bg-color: #1a202c;
+    --card-bg: #2d3748;
+    --text-color: #e2e8f0;
+    --secondary-text: #a0aec0;
+    --link-color: #63b3ed;
+    --border-color: #4a5568;
+    --nav-bg: #2d3748;
+    --nav-shadow: none;
+    --footer-bg: #2d3748;
+}
+
+/* * 2. Mobile-First Styles (Base Styles) 
+ * These styles apply to all devices and use the CSS variables for theme support.
  */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f4f4f7;
-    color: #333;
+    background-color: var(--bg-color); /* Uses the CSS variable */
+    color: var(--text-color); /* Uses the CSS variable */
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
 }
+
 .container {
-    max-width: 95%; /* Use a percentage for a fluid layout */
+    max-width: 95%; 
     margin: 0 auto;
-    padding: 15px; /* Reduced padding for smaller screens */
-    background-color: #fff;
+    padding: 15px;
+    background-color: var(--card-bg); /* Uses the CSS variable */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
 }
+
 .hero {
     text-align: center;
-    padding: 30px 0; /* Reduced padding */
+    padding: 30px 0;
     margin-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color); /* Uses the CSS variable */
 }
+
 .hero-image {
-    width: 120px; /* Smaller image on mobile */
+    width: 120px; 
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 15px auto;
-    border: 4px solid #2b6cb0;
+    border: 4px solid var(--link-color); /* Uses the CSS variable */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
 .hero-title {
-    font-size: 1.8rem; /* Adjusted font size for readability */
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #2d3748;
+    color: var(--text-color);
     margin-bottom: 8px;
 }
+
 .hero-subtitle {
-    font-size: 1rem; /* Adjusted font size */
-    color: #718096;
+    font-size: 1rem;
+    color: var(--secondary-text); /* Uses the CSS variable */
     margin-bottom: 15px;
 }
-.hero-summary {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 10px;
-    max-width: 100%; /* Ensures text wraps correctly */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-}
+
 nav {
-    background-color: #cfeef7;
+    background-color: var(--nav-bg); /* Uses the CSS variable */
+    box-shadow: var(--nav-shadow); /* Uses the CSS variable */
     padding: 10px 15px;
     border-radius: 6px;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column; /* Stack nav items vertically */
+    flex-direction: column;
     align-items: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
+
 .nav-left {
     display: flex;
     align-items: center;
-    margin-bottom: 15px; /* Space between logo and links on mobile */
+    margin-bottom: 15px;
 }
+
 .nav-profile-image {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #3b82f6;
+    border: 2px solid var(--link-color);
     margin-right: 15px;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column; /* Stack nav links vertically */
+    flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
 nav ul li {
     margin: 5px 0;
     width: 100%;
     text-align: center;
 }
+
 nav a {
     text-decoration: none;
-    color: #4a5568;
+    color: var(--secondary-text); /* Uses the CSS variable */
     font-weight: 600;
     transition: color 0.3s ease;
-    display: block; /* Makes links fill the width for easy tapping */
+    display: block; 
     padding: 8px;
 }
-nav a:hover {
-    color: #3b82f6;
+
+nav a:hover, .tab:hover {
+    color: var(--link-color); /* Uses the CSS variable */
 }
+
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--text-color);
     margin-bottom: 15px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 8px;
 }
+
 .publication-item {
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 15px;
     margin-bottom: 15px;
-    word-wrap: break-word; /* Prevents long titles from overflowing */
+    word-wrap: break-word; 
 }
+
 .skill-item {
     display: flex; 
-    flex-direction: column; /* Stacks skill name, rating, and description */
+    flex-direction: column; 
     padding: 10px 0;
-    border-bottom: 1px dashed #f0f0f0;
+    border-bottom: 1px dashed var(--border-color);
 }
+
 .skill-name {
     font-size: 1rem;
-    color: #4a5568;
+    color: var(--secondary-text);
     font-weight: 500;
     margin-bottom: 5px;
 }
+
 .star-rating {
     display: flex;
     margin-bottom: 5px;
 }
+
 .star-icon {
     width: 16px; 
     height: 16px;
     fill: #f6ad55;
     margin-right: 2px;
 }
+
 .skill-applied-in {
     font-size: 0.85rem;
-    color: #718096;
-}
-/* ... all other styles that don't need to change go here ... */
-.about-card, .tab-buttons, .badge-best-venue, .year-subsection, .contact-list, footer {
-    /* Your original styles for these elements remain unchanged as they work on all screen sizes */
+    color: var(--secondary-text);
 }
 
-/* * DESKTOP/TABLET STYLES: These styles override the mobile-first styles when the screen
- * width is 768px or wider.
+/* * 3. Desktop/Tablet Styles (Media Query) 
+ * These styles override the mobile-first styles for wider screens.
  */
 @media (min-width: 768px) {
     .container {
-        max-width: 960px; /* Restore desktop width */
-        padding: 20px;
+        max-width: 1200px;
+        padding: 2rem;
     }
+    
+    .nav-profile-image {
+        width: 50px;
+        height: 50px;
+    }
+
     .hero {
-        padding: 60px 0; /* Restore original padding */
+        padding: 60px 0; 
         margin-bottom: 40px;
     }
+
     .hero-image {
-        width: 170px; /* Restore original image size */
+        width: 170px;
         height: 170px;
     }
+
     .hero-title {
-        font-size: 2.5rem; /* Restore original font size */
+        font-size: 2.5rem;
     }
+
     .hero-subtitle {
         font-size: 1.2rem;
     }
+
     nav {
-        flex-direction: row; /* Horizontal layout */
+        flex-direction: row;
         justify-content: space-between;
         padding: 15px 20px;
     }
+
     .nav-left {
         margin-bottom: 0;
     }
+
     nav ul {
-        flex-direction: row; /* Horizontal nav links */
+        flex-direction: row;
         justify-content: center;
         flex-grow: 1;
         width: auto;
     }
+
     nav ul li {
         margin: 0 15px;
         width: auto;
     }
+
     .skill-item {
-        display: grid; /* Restore original grid layout */
+        display: grid;
         grid-template-columns: 1fr auto 2fr;
         gap: 10px;
         align-items: center;
     }
+
     .star-rating {
-        justify-content: flex-end; /* Align stars to the right */
+        justify-content: flex-end;
         margin-bottom: 0;
     }
 }
