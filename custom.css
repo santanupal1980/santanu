@@ -79,15 +79,48 @@ body {
 }
 
 nav {
-    background-color: var(--nav-bg); /* Uses the CSS variable */
-    box-shadow: var(--nav-shadow); /* Uses the CSS variable */
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--nav-bg);
+    box-shadow: var(--nav-shadow);
+}
+
+.hamburger {
+    display: block; /* Show the hamburger icon on mobile */
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+#nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed; /* Position the menu off-screen */
+    top: 60px; /* Adjust based on your nav height */
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    height: 100vh;
+    transform: translateX(-100%); /* Hide the menu by default */
+    transition: transform 0.3s ease-in-out;
     flex-direction: column;
     align-items: center;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    justify-content: center;
+}
+
+#nav-links.active {
+    transform: translateX(0); /* Slide the menu in when active */
 }
 
 .nav-left {
@@ -185,6 +218,18 @@ nav a:hover, .tab:hover {
  * These styles override the mobile-first styles for wider screens.
  */
 @media (min-width: 768px) {
+    .hamburger {
+        display: none; /* Hide the hamburger icon on desktop */
+    }
+
+    #nav-links {
+        position: static; /* Position the menu back to normal */
+        transform: translateX(0); /* Ensure it's always visible */
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+    }
     .container {
         max-width: 1200px;
         padding: 2rem;
