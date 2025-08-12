@@ -19,6 +19,7 @@
              --nav-bg: #ffffff;
              --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
              --footer-bg: #f0f4f8;
+             --tier1-border-color: #fde047; /* A nice golden yellow for highlights */
          }
          .dark-mode {
              --bg-color: #1a202c;
@@ -30,6 +31,7 @@
              --nav-bg: #2d3748;
              --nav-shadow: none;
              --footer-bg: #2d3748;
+             --tier1-border-color: #facc15; /* A slightly different yellow for dark mode */
          }
          body {
              font-family: 'Inter', sans-serif;
@@ -51,6 +53,10 @@
              cursor: pointer;
          }
          .dark-mode .pub-card { box-shadow: none; border: 1px solid var(--border-color); }
+         .pub-card.tier1 {
+            border-left: 5px solid var(--tier1-border-color);
+            box-shadow: 0 4px 6px -1px rgba(253, 224, 71, 0.2), 0 2px 4px -1px rgba(253, 224, 71, 0.1);
+            }
          .pub-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
                                                                  0 4px 6px -2px rgba(0,0,0,0.05); }
          .pub-content { padding: 1.5rem; }
@@ -67,6 +73,17 @@
          .close-button { position:absolute; top:1rem; right:1rem; font-size: 1.5rem; cursor:pointer; }
          footer { text-align:center; padding:20px 0; font-size:0.85rem; color: var(--secondary-text);
                   background-color: var(--footer-bg); border-radius: 6px; margin-top:40px; }
+     
+        .logo-container {
+            width: 50px;
+            height: 50px;
+            min-width: 50px; /* Prevent shrinking in flexbox */
+        }
+        .pub-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
      </style>
  </head>
  <body>
@@ -110,119 +127,191 @@
  </div>
 
  <script>
- const publications = {
-     journal: [
-         { title: "Hybrid Quantum-Classical Neural Network for Multi-Modal Multi-Task Sarcasm, Emotion and Sentiment Analysis", authors: "A. Phukan, S. Pal, and A. Ekbal", venue: "IEEE Transactions on Computational Social Systems (Impact Factor=4.5)", year: "2024" },
-         { title: "Let's All Laugh Together: A Novel Multitask Framework for Humor Detection in Internet Memes", authors: "G. Kumari, D. Bandyopadhyay, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Transactions on Computational Social Systems (Impact Factor=4.5)", year: "2024" },
-         { title: "HHSD: Hindi Hate Speech Detection Leveraging Multi-Task Learning", authors: "P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Access (Impact Factor=3.4)", year: "2023" },
-         { title: "HHLD: Hateful posts Identification in Hindi Language leveraging multi task learning", authors: "P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Access (Impact Factor=3.4)", year: "2023" },
-         { title: "Multi-modal estimation of cognitive load in post-editing of machine translation", authors: "N. Herbig, S. Pal, A. Krüger, and J. van Genabith", venue: "Translation, interpreting, cognition", year: "2021" },
-         { title: "Multi-modal Indicators for Estimating Perceived Cognitive Load in Post-Editing of Machine Translation", authors: "N. Herbig, S. Pal, M. Vela, A. Krüger, and J. van Genabith", venue: "Machine Translation Journal", year: "2019" }
-     ],
-     conference: [
-         { title: "A case study on context-aware neural machine translation with multi-task learning", authors: "R. Appicharla, B. Gain, S. Pal, A. Ekbal, and P. Bhattacharyya", venue: "Proceedings of the 25th Annual Conference of The European Association for Machine Translation", year: "2024" },
-         { title: "Findings of wmt 2024 shared task on low-resource indic languages translation", authors: "P. Pakray, S. Pal, A. Vetagiri, R. Krishna, A. K. Maji, S. Dash, L. Laitonjam, L. Sarah, and R. Manna", venue: "Proceedings of the Ninth Conference on Machine Translation", year: "2024" },
-         { title: "TRAVID: An End-to-End Video Translation Framework", authors: "P. K. Adhikary, B. Sugandhi, S. Ghimire, S. Pal, and P. Pakray", venue: "System Demonstrations, IJCNLP-AACL 2023", year: "2023" },
-         { title: "Findings of the wmt 2023 shared task on low-resource indic language translation", authors: "S. Pal, P. Pakray, S. R. Laskar, L. Laitonjam, V. Khenglawt, S. Warjri, P. K. Dadure, and S. K. Dash", venue: "Proceedings of the Eighth Conference on Machine Translation", year: "2023" },
-         { title: "lacs-Irilt: Machine translation for low-resource indic languages", authors: "D. Suman, A. Mandal, S. Pal, and S. K. Naskar", venue: "Proceedings of the Eighth Conference on Machine Translation", year: "2023" },
-         { title: "Team_Hawk at WASSA 2023 Empathy, Emotion, and Personality Shared Task: Multi-tasking Multi-encoder based transformers for Empathy and Emotion Prediction in Conversations", authors: "A. S. Srinivas, N. Barua, and S. Pal", venue: "Proceedings of the 13th Workshop on Computational Approaches to Subjectivity, Sentiment, & Social Media Analysis", year: "2023" },
-         { title: "A case study on context encoding in multi-encoder based document-level neural machine translation", authors: "R. Appicharla, B. Gain, S. Pal, and A. Ekbal", venue: "Proceedings of Machine Translation Summit XIX: Research Track", year: "2023" },
-         { title: "Zombies eat brains, you are safe: A knowledge infusion based multitasking system for sarcasm detection in meme", authors: "D. Bandyopadhyay, G. Kumari, A. Ekbal, S. Pal, A., Chatterjee, and V. BN", venue: "ECIR 2023: European Conference on Information Retrieval", year: "2023" },
-         { title: "Findings of the 2021 conference on machine translation (wmt21)", authors: "F. Akhbardeh, A. Arkhangorodsky, M. Biesialska, O. Bojar, R. Chatterjee, V. Chaudhary, M. R. Costa-jussà, C. España-Bonet, A. Fan, C. Federmann, et al.", venue: "Proceedings of the Sixth Conference on Machine Translation", year: "2021" },
-         { title: "The Transference Architecture for Automatic Post-Editing", authors: "S. Pal, H. Xu, N. Herbig, S. K. Naskar, A. Krüger, and J. van Genabith", venue: "Proceedings of COLING 2020, the 27th International Conference on Computational Linguistics: Technical Papers", year: "2020" },
-         { title: "MMPE: A Multi-Modal Interface for Post-Editing Machine Translation", authors: "N. Herbig, T. Düwel, S. Pal, K. Meladaki, M. Monshizadeh, A. Krüger, and J. van Genabith", venue: "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics", year: "2020" },
-         { title: "MMPE: A Multi-Modal Interface using Handwriting, Touch Reordering, and Speech Commands for Post-Editing Machine Translation", authors: "N. Herbig, S. Pal, T. Düwel, K. Meladaki, M. Monshizadeh, V. Hnatovskiy, A. Krüger, and J. van Genabith", venue: "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations", year: "2020" },
-         { title: "Findings of the 2020 Conference on Machine Translation (WMT20)", authors: "L. Barrault, M. Biesialska, O. Bojar, M. R. Costa-jussà, C. Federmann, Y. Graham, R. Grundkiewicz, B. Haddow, M. Huck, E. Joanis, T. Kocmi, P. Koehn, C.-k. Lo, N. Ljubešić, C. Monz, M. Morishita, M. Nagata, T. Nakazawa, S. Pal, M. Post, and M. Zampieri", venue: "Proceedings of the Fifth Conference on Machine Translation", year: "2020" },
-         { title: "Improving CAT tools in the translation workflow: New approaches and evaluation", authors: "M. Vela, S. Pal, M. Zampieri, S. Naskar, and J. van Genabith", venue: "Proceedings of Machine Translation Summit XVII Volume 2: Translator, Project and User Tracks", year: "2019" },
-         { title: "Findings of the 2019 conference on machine translation (wmt19)", authors: "L. Barrault, O. Bojar, M. R. Costa-jussà, C. Federmann, M. Fishel, Y. Graham, B. Haddow, M. Huck, P. Koehn, S. Malmasi, C. Monz, M. Müller, S. Pal, M. Post, and M. Zampieri", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019" },
-         { title: "Multi-modal approaches for post-editing machine translation", authors: "N. Herbig, S. Pal, J. van Genabith, and A. Krüger", venue: "Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems", year: "2019" },
-         { title: "Ju-saarland submission to the wmt2019 english-gujarati translation shared task", authors: "R. Mondal, S. R. Nayek, A. Chowdhury, S. Pal, S. K. Naskar, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019" },
-         { title: "Usaar-dfki - the transference architecture for english-german automatic post-editing", authors: "S. Pal, H. Xu, N. Herbig, A. Krüger, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019" },
-         { title: "Uds-dfki submission to the wmt2019 czech-polish similar language translation shared task", authors: "S. Pal, M. Zampieri, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019" },
-         { title: "Discriminating between indo-aryan languages using svm ensembles", authors: "A. M. Ciobanu, M. Zampieri, S. Malmasi, S. Pal, and L. P. Dinu", venue: "arXiv preprint arXiv:1807.03108", year: "2018" },
-         { title: "A neural approach to language variety translation", authors: "M. R. Costa-Jussa, M. Zampieri, and S. Pal", venue: "arXiv preprint arXiv:1807.00651", year: "2018" },
-         { title: "A deep learning based approach to transliteration", authors: "S. Kundu, S. Paul, and S. Pal", venue: "Proceedings of the Seventh Named Entities Workshop", year: "2018" },
-         { title: "Keep it or not: Word level quality estimation for post-editing", authors: "P. Basu, S. Pal, and S. K. Naskar", venue: "Proceedings of the Third Conference on Machine Translation: Shared Task Papers", year: "2018" },
-         { title: "Multi-source Neural Automatic Post-Editing: FBK's participation in the WMT 2017 APE shared task", authors: "R. Chatterjee, M. A. Farajian, M. Negri, M. Turchi, A. Srivastava, and S. Pal", venue: "Proceedings of the Second Conference on Machine Translation", year: "2017" },
-         { title: "Neural automatic post-editing using prior alignment and reranking", authors: "S. Pal, S. K. Naskar, M. Vela, Q. Liu, and J. van Genabith", venue: "Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 2, Short Papers", year: "2017" },
-         { title: "Multi-Engine and Multi-Alignment Based Automatic Post-Editing and its Impact on Translation Productivity", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers", year: "2016" },
-         { title: "CATaLog Online: A Web-based CAT Tool for Distributed Translation with Data Capture for APE and Translation Process Research", authors: "S. Pal, S. K. Naskar, M. Zampieri, T. Nayak, and J. van Genabith", venue: "Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: System Demonstrations", year: "2016" },
-         { title: "A Neural Network based Approach to Automatic Post-Editing", authors: "S. Pal, S. K. Naskar, M. Vela, and J. van Genabith", venue: "Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)", year: "2016" },
-         { title: "USAAR: An Operation Sequential Model for Automatic Statistical Post-Editing", authors: "S. Pal, M. Zampieri, and J. van Genabith", venue: "Proceedings of the First Conference on Machine Translation", year: "2016" },
-         { title: "JU-USAAR: A Domain Adaptive MT System.", authors: "K. Pahari, A. Kuila, S. Pal, S. K. Naskar, S. Bandyopadhyay, and J. van Genabith", venue: "WMT", year: "2016" },
-         { title: "CATaLog Online: Porting a Post-editing Tool to the Web", authors: "S. Pal, M. Zampieri, S. K. Naskar, T. Nayak, M. Vela, and J. van Genabith", venue: "Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)", year: "2016" },
-         { title: "Beyond Translation Memories: Generating Translation Suggestions based on Parsing and POS Tagging", authors: "T. Nayak, S. Pal, N. Sudip, and J. van Genabith", venue: "2nd Workshop on Natural Language Processing for Translation Memories (NLP4TM 2016)", year: "2016" },
-         { title: "Forest to String Based Statistical Machine Translation with Hybrid Word Alignments", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "17th International Conference on Intelligent Text Processing and Computational Linguistics, Springer", year: "2016" },
-         { title: "Statistical Automatic Post Editing", authors: "S. Pal", venue: "The Proceedings of the EXPERT Scientific and Technological workshop", year: "2015" },
-         { title: "Catalog: New approaches to tm and post editing interfaces", authors: "T. Nayek, S. K. Naskar, S. Pal, M. Zampieri, M. Vela, and J. van Genabith", venue: "RANLP 2015", year: "2015" },
-         { title: "UdS-Sant: English-German Hybrid Machine Translation System.", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "WMT@ EMNLP", year: "2015" },
-         { title: "USAAR-SAPE: An English-Spanish Statistical Automatic Post-Editing System.", authors: "S. Pal, M. Vela, S. K. Naskar, and J. van Genabith", venue: "WMT@ EMNLP", year: "2015" },
-         { title: "Manawi: Using Multi-Word Expressions and Named Entities to Improve Machine Translation.", authors: "L. Tan and S. Pal", venue: "WMT@ ACL", year: "2014" },
-         { title: "Word Alignment-Based Reordering of Source Chunks in PB-SMT", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC-2014)", year: "2014" },
-         { title: "Comparability of Corpora in Human and Machine Translation", authors: "E. Lapshinova-Koltunski and S. Pal", venue: "2014", year: "2014" },
-         { title: "Automatic Building and Using Parallel Resources for SMT from Comparable Corpora.", authors: "S. Pal, P. Pakray, S. K. Naskar, et al.", venue: "HyTra@ EACL", year: "2014" },
-         { title: "USAAR-DCU Hybrid Machine Translation System for ICON 2014", authors: "S. Pal, A. Srivastava, S. Dandapat, J. V. Genabith, and A. Way", venue: "ICON-2014: 11th International Conference on Natural Language Processing", year: "2014" },
-         { title: "Role of Paraphrases in PB-SMT", authors: "S. Pal, P. Lohar, and S. K. Naskar", venue: "Computational Linguistics and Intelligent Text Processing, Springer Berlin Heidelberg", year: "2014" },
-         { title: "Impact of Linguistically Motivated Shallow Phrases in PB-SMT", authors: "S. Pal, M. Hasanuzzaman, S. K. Naskar, and S. Bandyopadhyay", venue: "ICON 2013", year: "2013" },
-         { title: "Improving mt system using extracted parallel fragments of text from comparable corpora", authors: "R. Gupta, S. Pal, and S. Bandyopadhyay", venue: "proceedings of 6th workshop of Building and Using Comparable Corpora (BUCC), ACL, Sofia, Bulgaria", year: "2013" },
-         { title: "A Hybrid Word Alignment Model for Phrase-Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the Second Workshop on Hybrid Approaches to Translation", year: "2013" },
-         { title: "MWE Alignment in Phrase Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the XIV Machine Translation Summit", year: "2013" },
-         { title: "Handling Multiword Expressions in Phrase-Based Statistical Machine Translation", authors: "S. Pal, T. Chakraborty, and S. Bandyopadhyay", venue: "In Proceedings of the 13th Machine Translation Summit", year: "2011" },
-         { title: "Rule Based Plagiarism Detection using Information Retrieval", authors: "A. Ghosh, P. Bhaskar, S. Pal, and S. Bandyopadhyay", venue: "Petras et al", year: "2011" },
-         { title: "Qgstec system description-JUQGG: A rule based approach", authors: "S. Pal, T. Mondal, P. Pakray, D. Das, and S. Bandyopadhyay", venue: "Boyer & Piwek", year: "2010" },
-         { title: "JU_CSE_TE: System Description QA@ CLEF 2010-ResPubliQA.", authors: "P. Pakray, P. Bhaskar, S. Pal, D. Das, S. Bandyopadhyay, and A. F. Gelbukh", venue: "CLEF (Notebook Papers/LABs/Workshops)", year: "2010" },
-         { title: "JU_CSE_TAC: Textual Entailment Recognition System at TAC RTE-6.", authors: "P. Pakray, S. Pal, S. Poria, S. Bandyopadhyay, and A. F. Gelbukh", venue: "TAC", year: "2010" },
-         { title: "Handling Named Entities and Compound Verbs in Phrase-Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, P. Pecina, S. Bandyopadhyay, and A. Way", venue: "MWE workshop, 23rd International Conference of Computational Linguistics (Coling 2010)", year: "2010" },
-         { title: "Automatic Extraction of Complex Predicates in Bengali", authors: "D. Das, S. Pal, T. Mondal, T. Chakraborty, and S. Bandyopadhyay", venue: "MWE workshop, The 23rd International conference of computational linguistics (Coling 2010)", year: "2010" }
-     ],
-     "book-chapters": [
-         { title: "Hybrid word alignment", authors: "S. Pal and S. K. Naskar", venue: "Hybrid Approaches to Machine Translation, Springer", year: "2016" },
-         { title: "Mining Parallel Resources for Machine Trans-lation from Comparable Corpora", authors: "S. Pal, P. Pakray, A. Gelbukh, and J. van Genabith", venue: "Springer International Publishing", year: "2015" }
-     ]
+    function toTitleCase(str) {
+      if (!str) return '';
+      const specialWords = ['a', 'an', 'and', 'at', 'but', 'by', 'for', 'in', 'nor', 'of', 'on', 'or', 'the', 'to', 'up'];
+      
+      return str.split(' ').map((word, index) => {
+        // Leave acronyms (all caps) as they are
+        if (word.toUpperCase() === word && word.length > 1) {
+            return word;
+        }
+        // Capitalize the first word of the title, regardless of its length
+        if (index === 0) {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+        // Lowercase small words, but capitalize all others
+        const lowerCaseWord = word.toLowerCase();
+        if (specialWords.includes(lowerCaseWord) && !word.includes('-')) {
+          return lowerCaseWord;
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }).join(' ');
+    }
+const venueLogos = {
+        "IEEE Transactions on Computational Social Systems": "https://placehold.co/50x50/196D98/fff?text=IEEE",
+        "IEEE Access": "https://placehold.co/50x50/196D98/fff?text=IEEE",
+        "Proceedings of the 25th Annual Conference of The European Association for Machine Translation": "https://placehold.co/50x50/003366/fff?text=EAMT",
+        "Proceedings of the Ninth Conference on Machine Translation": "https://placehold.co/50x50/4B72AF/fff?text=WMT",
+        "Proceedings of COLING 2020, the 27th International Conference on Computational Linguistics: Technical Papers": "https://placehold.co/50x50/2B3E52/fff?text=COLING",
+        "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics": "https://placehold.co/50x50/4C9B6A/fff?text=ACL",
+        "ECIR 2023: European Conference on Information Retrieval": "https://placehold.co/50x50/E56A54/fff?text=ECIR",
+        "IJCNLP-AACL": "https://placehold.co/50x50/E56A54/fff?text=IJCNLP",
+        // Add more venues here
+    };
+
+    
+    const getLogoUrl = (venue) => {
+        return venueLogos[venue] || `https://placehold.co/50x50/666/fff?text=PUB`;
+    };
+
+    // A function to generate a placeholder public link (e.g., a Google Scholar search)
+    const getPublicLink = (title) => {
+        const searchTitle = encodeURIComponent(title.replace(/\s+/g, ' '));
+        return `https://scholar.google.com/scholar?q=${searchTitle}`;
+    };
+const publications = {
+        journal: [
+            <!-- CHANGE: Added 'isTier1' property to some publications -->
+            { title: "Hybrid Quantum-Classical Neural Network for Multi-Modal Multi-Task Sarcasm, Emotion and Sentiment Analysis", authors: "A. Phukan, S. Pal, and A. Ekbal", venue: "IEEE Transactions on Computational Social Systems", year: "2024", isTier1: true },
+            { title: "Let's All Laugh Together: A Novel Multitask Framework for Humor Detection in Internet Memes", authors: "G. Kumari, D. Bandyopadhyay, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Transactions on Computational Social Systems", year: "2024", isTier1: true },
+            { title: "HHSD: Hindi Hate Speech Detection Leveraging Multi-Task Learning", authors: "P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Access", year: "2023", isTier1: false },
+            { title: "HHLD: Hateful posts Identification in Hindi Language leveraging multi task learning", authors: "P. Kapil, G. Kumari, A. Ekbal, S. Pal, A. Chatterjee, and B. Vinutha", venue: "IEEE Access", year: "2023", isTier1: false },
+            { title: "Multi-modal estimation of cognitive load in post-editing of machine translation", authors: "N. Herbig, S. Pal, A. Krüger, and J. van Genabith", venue: "Translation, interpreting, cognition", year: "2021", isTier1: false },
+            { title: "Multi-modal Indicators for Estimating Perceived Cognitive Load in Post-Editing of Machine Translation", authors: "N. Herbig, S. Pal, M. Vela, A. Krüger, and J. van Genabith", venue: "Machine Translation Journal", year: "2019", isTier1: false }
+        ],
+        conference: [
+            { title: "A case study on context-aware neural machine translation with multi-task learning", authors: "R. Appicharla, B. Gain, S. Pal, A. Ekbal, and P. Bhattacharyya", venue: "Proceedings of the 25th Annual Conference of The European Association for Machine Translation", year: "2024", isTier1: false },
+            { title: "Findings of wmt 2024 shared task on low-resource indic languages translation", authors: "P. Pakray, S. Pal, A. Vetagiri, R. Krishna, A. K. Maji, S. Dash, L. Laitonjam, L. Sarah, and R. Manna", venue: "Proceedings of the Ninth Conference on Machine Translation", year: "2024", isTier1: false },
+            { title: "TRAVID: An End-to-End Video Translation Framework", authors: "P. K. Adhikary, B. Sugandhi, S. Ghimire, S. Pal, and P. Pakray", venue: "IJCNLP-AACL", year: "2023", isTier1: true },
+            { title: "Findings of the wmt 2023 shared task on low-resource indic language translation", authors: "S. Pal, P. Pakray, S. R. Laskar, L. Laitonjam, V. Khenglawt, S. Warjri, P. K. Dadure, and S. K. Dash", venue: "Proceedings of the Eighth Conference on Machine Translation", year: "2023", isTier1: false },
+            { title: "lacs-Irilt: Machine translation for low-resource indic languages", authors: "D. Suman, A. Mandal, S. Pal, and S. K. Naskar", venue: "Proceedings of the Eighth Conference on Machine Translation", year: "2023", isTier1: false },
+            { title: "Team_Hawk at WASSA 2023 Empathy, Emotion, and Personality Shared Task: Multi-tasking Multi-encoder based transformers for Empathy and Emotion Prediction in Conversations", authors: "A. S. Srinivas, N. Barua, and S. Pal", venue: "Proceedings of the 13th Workshop on Computational Approaches to Subjectivity, Sentiment, & Social Media Analysis", year: "2023", isTier1: false },
+            { title: "A case study on context encoding in multi-encoder based document-level neural machine translation", authors: "R. Appicharla, B. Gain, S. Pal, and A. Ekbal", venue: "Proceedings of Machine Translation Summit XIX: Research Track", year: "2023", isTier1: false },
+            { title: "Zombies eat brains, you are safe: A knowledge infusion based multitasking system for sarcasm detection in meme", authors: "D. Bandyopadhyay, G. Kumari, A. Ekbal, S. Pal, A., Chatterjee, and V. BN", venue: "ECIR 2023: European Conference on Information Retrieval", year: "2023", isTier1: true },
+            { title: "Findings of the 2021 conference on machine translation (wmt21)", authors: "F. Akhbardeh, A. Arkhangorodsky, M. Biesialska, O. Bojar, R. Chatterjee, V. Chaudhary, M. R. Costa-jussà, C. España-Bonet, A. Fan, C. Federmann, et al.", venue: "Proceedings of the Sixth Conference on Machine Translation", year: "2021", isTier1: false },
+            { title: "The Transference Architecture for Automatic Post-Editing", authors: "S. Pal, H. Xu, N. Herbig, S. K. Naskar, A. Krüger, and J. van Genabith", venue: "Proceedings of COLING 2020, the 27th International Conference on Computational Linguistics: Technical Papers", year: "2020", isTier1: true },
+            { title: "MMPE: A Multi-Modal Interface for Post-Editing Machine Translation", authors: "N. Herbig, T. Düwel, S. Pal, K. Meladaki, M. Monshizadeh, A. Krüger, and J. van Genabith", venue: "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics", year: "2020", isTier1: true },
+            { title: "MMPE: A Multi-Modal Interface using Handwriting, Touch Reordering, and Speech Commands for Post-Editing Machine Translation", authors: "N. Herbig, S. Pal, T. Düwel, K. Meladaki, M. Monshizadeh, V. Hnatovskiy, A. Krüger, and J. van Genabith", venue: "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics", year: "2020", isTier1: true },
+            { title: "Findings of the 2020 Conference on Machine Translation (WMT20)", authors: "L. Barrault, M. Biesialska, O. Bojar, M. R. Costa-jussà, C. Federmann, Y. Graham, R. Grundkiewicz, B. Haddow, M. Huck, E. Joanis, T. Kocmi, P. Koehn, C.-k. Lo, N. Ljubešić, C. Monz, M. Morishita, M. Nagata, T. Nakazawa, S. Pal, M. Post, and M. Zampieri", venue: "Proceedings of the Fifth Conference on Machine Translation", year: "2020", isTier1: false },
+            { title: "Improving CAT tools in the translation workflow: New approaches and evaluation", authors: "M. Vela, S. Pal, M. Zampieri, S. Naskar, and J. van Genabith", venue: "Proceedings of Machine Translation Summit XVII Volume 2: Translator, Project and User Tracks", year: "2019", isTier1: false },
+            { title: "Findings of the 2019 conference on machine translation (wmt19)", authors: "L. Barrault, O. Bojar, M. R. Costa-jussà, C. Federmann, M. Fishel, Y. Graham, B. Haddow, M. Huck, P. Koehn, S. Malmasi, C. Monz, M. Müller, S. Pal, M. Post, and M. Zampieri", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019", isTier1: false },
+            { title: "Multi-modal approaches for post-editing machine translation", authors: "N. Herbig, S. Pal, J. van Genabith, and A. Krüger", venue: "Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems", year: "2019", isTier1: false },
+            { title: "Ju-saarland submission to the wmt2019 english-gujarati translation shared task", authors: "R. Mondal, S. R. Nayek, A. Chowdhury, S. Pal, S. K. Naskar, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019", isTier1: false },
+            { title: "Usaar-dfki - the transference architecture for english-german automatic post-editing", authors: "S. Pal, H. Xu, N. Herbig, A. Krüger, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019", isTier1: false },
+            { title: "Uds-dfki submission to the wmt2019 czech-polish similar language translation shared task", authors: "S. Pal, M. Zampieri, and J. van Genabith", venue: "Proceedings of the Fourth Conference on Machine Translation", year: "2019", isTier1: false },
+            { title: "Discriminating between indo-aryan languages using svm ensembles", authors: "A. M. Ciobanu, M. Zampieri, S. Malmasi, S. Pal, and L. P. Dinu", venue: "arXiv preprint arXiv:1807.03108", year: "2018", isTier1: false },
+            { title: "A neural approach to language variety translation", authors: "M. R. Costa-Jussa, M. Zampieri, and S. Pal", venue: "arXiv preprint arXiv:1807.00651", year: "2018", isTier1: false },
+            { title: "A deep learning based approach to transliteration", authors: "S. Kundu, S. Paul, and S. Pal", venue: "Proceedings of the Seventh Named Entities Workshop", year: "2018", isTier1: false },
+            { title: "Keep it or not: Word level quality estimation for post-editing", authors: "P. Basu, S. Pal, and S. K. Naskar", venue: "Proceedings of the Third Conference on Machine Translation: Shared Task Papers", year: "2018", isTier1: false },
+            { title: "Multi-source Neural Automatic Post-Editing: FBK's participation in the WMT 2017 APE shared task", authors: "R. Chatterjee, M. A. Farajian, M. Negri, M. Turchi, A. Srivastava, and S. Pal", venue: "Proceedings of the Second Conference on Machine Translation", year: "2017", isTier1: false },
+            { title: "Neural automatic post-editing using prior alignment and reranking", authors: "S. Pal, S. K. Naskar, M. Vela, Q. Liu, and J. van Genabith", venue: "Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 2, Short Papers", year: "2017", isTier1: true },
+            { title: "Multi-Engine and Multi-Alignment Based Automatic Post-Editing and its Impact on Translation Productivity", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers", year: "2016", isTier1: true },
+            { title: "CATaLog Online: A Web-based CAT Tool for Distributed Translation with Data Capture for APE and Translation Process Research", authors: "S. Pal, S. K. Naskar, M. Zampieri, T. Nayak, and J. van Genabith", venue: "Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: System Demonstrations", year: "2016", isTier1: true },
+            { title: "A Neural Network based Approach to Automatic Post-Editing", authors: "S. Pal, S. K. Naskar, M. Vela, and J. van Genabith", venue: "Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)", year: "2016", isTier1: true },
+            { title: "USAAR: An Operation Sequential Model for Automatic Statistical Post-Editing", authors: "S. Pal, M. Zampieri, and J. van Genabith", venue: "Proceedings of the First Conference on Machine Translation", year: "2016", isTier1: false },
+            { title: "JU-USAAR: A Domain Adaptive MT System.", authors: "K. Pahari, A. Kuila, S. Pal, S. K. Naskar, S. Bandyopadhyay, and J. van Genabith", venue: "WMT", year: "2016", isTier1: false },
+            { title: "CATaLog Online: Porting a Post-editing Tool to the Web", authors: "S. Pal, M. Zampieri, S. K. Naskar, T. Nayak, M. Vela, and J. van Genabith", venue: "Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)", year: "2016", isTier1: false },
+            { title: "Beyond Translation Memories: Generating Translation Suggestions based on Parsing and POS Tagging", authors: "T. Nayak, S. Pal, N. Sudip, and J. van Genabith", venue: "2nd Workshop on Natural Language Processing for Translation Memories (NLP4TM 2016)", year: "2016", isTier1: false },
+            { title: "Forest to String Based Statistical Machine Translation with Hybrid Word Alignments", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "17th International Conference on Intelligent Text Processing and Computational Linguistics, Springer", year: "2016", isTier1: false },
+            { title: "Statistical Automatic Post Editing", authors: "S. Pal", venue: "The Proceedings of the EXPERT Scientific and Technological workshop", year: "2015", isTier1: false },
+            { title: "Catalog: New approaches to tm and post editing interfaces", authors: "T. Nayek, S. K. Naskar, S. Pal, M. Zampieri, M. Vela, and J. van Genabith", venue: "RANLP 2015", year: "2015", isTier1: false },
+            { title: "UdS-Sant: English-German Hybrid Machine Translation System.", authors: "S. Pal, S. K. Naskar, and J. van Genabith", venue: "WMT@ EMNLP", year: "2015", isTier1: true },
+            { title: "USAAR-SAPE: An English-Spanish Statistical Automatic Post-Editing System.", authors: "S. Pal, M. Vela, S. K. Naskar, and J. van Genabith", venue: "WMT@ EMNLP", year: "2015", isTier1: true },
+            { title: "Manawi: Using Multi-Word Expressions and Named Entities to Improve Machine Translation.", authors: "L. Tan and S. Pal", venue: "WMT@ ACL", year: "2014", isTier1: true },
+            { title: "Word Alignment-Based Reordering of Source Chunks in PB-SMT", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC-2014)", year: "2014", isTier1: false },
+            { title: "Comparability of Corpora in Human and Machine Translation", authors: "E. Lapshinova-Koltunski and S. Pal", venue: "2014", year: "2014", isTier1: false },
+            { title: "Automatic Building and Using Parallel Resources for SMT from Comparable Corpora.", authors: "S. Pal, P. Pakray, S. K. Naskar, et al.", venue: "HyTra@ EACL", year: "2014", isTier1: true },
+            { title: "USAAR-DCU Hybrid Machine Translation System for ICON 2014", authors: "S. Pal, A. Srivastava, S. Dandapat, J. V. Genabith, and A. Way", venue: "ICON-2014: 11th International Conference on Natural Language Processing", year: "2014", isTier1: false },
+            { title: "Role of Paraphrases in PB-SMT", authors: "S. Pal, P. Lohar, and S. K. Naskar", venue: "Computational Linguistics and Intelligent Text Processing, Springer Berlin Heidelberg", year: "2014", isTier1: false },
+            { title: "Impact of Linguistically Motivated Shallow Phrases in PB-SMT", authors: "S. Pal, M. Hasanuzzaman, S. K. Naskar, and S. Bandyopadhyay", venue: "ICON 2013", year: "2013", isTier1: false },
+            { title: "Improving mt system using extracted parallel fragments of text from comparable corpora", authors: "R. Gupta, S. Pal, and S. Bandyopadhyay", venue: "proceedings of 6th workshop of Building and Using Comparable Corpora (BUCC), ACL, Sofia, Bulgaria", year: "2013", isTier1: false },
+            { title: "A Hybrid Word Alignment Model for Phrase-Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the Second Workshop on Hybrid Approaches to Translation", year: "2013", isTier1: false },
+            { title: "MWE Alignment in Phrase Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, and S. Bandyopadhyay", venue: "Proceedings of the XIV Machine Translation Summit", year: "2013", isTier1: false },
+            { title: "Handling Multiword Expressions in Phrase-Based Statistical Machine Translation", authors: "S. Pal, T. Chakraborty, and S. Bandyopadhyay", venue: "In Proceedings of the 13th Machine Translation Summit", year: "2011", isTier1: false },
+            { title: "Rule Based Plagiarism Detection using Information Retrieval", authors: "A. Ghosh, P. Bhaskar, S. Pal, and S. Bandyopadhyay", venue: "Petras et al", year: "2011", isTier1: false },
+            { title: "Qgstec system description-JUQGG: A rule based approach", authors: "S. Pal, T. Mondal, P. Pakray, D. Das, and S. Bandyopadhyay", venue: "Boyer & Piwek", year: "2010", isTier1: false },
+            { title: "JU_CSE_TE: System Description QA@ CLEF 2010-ResPubliQA.", authors: "P. Pakray, P. Bhaskar, S. Pal, D. Das, S. Bandyopadhyay, and A. F. Gelbukh", venue: "CLEF (Notebook Papers/LABs/Workshops)", year: "2010", isTier1: false },
+            { title: "JU_CSE_TAC: Textual Entailment Recognition System at TAC RTE-6.", authors: "P. Pakray, S. Pal, S. Poria, S. Bandyopadhyay, and A. F. Gelbukh", venue: "TAC", year: "2010", isTier1: false },
+            { title: "Handling Multiword Expressions in Phrase-Based Statistical Machine Translation", authors: "S. Pal, S. K. Naskar, P. Pecina, S. Bandyopadhyay, and A. Way", venue: "MWE workshop, 23rd International Conference of Computational Linguistics (Coling 2010)", year: "2010", isTier1: false },
+            { title: "Automatic Extraction of Complex Predicates in Bengali", authors: "D. Das, S. Pal, T. Mondal, T. Chakraborty, and S. Bandyopadhyay", venue: "MWE workshop, The 23rd International conference of computational linguistics (Coling 2010)", year: "2010", isTier1: false }
+        ],
+        "book-chapters": [
+            { title: "Hybrid word alignment", authors: "S. Pal and S. K. Naskar", venue: "Hybrid Approaches to Machine Translation, Springer", year: "2016", isTier1: false },
+            { title: "Mining Parallel Resources for Machine Trans-lation from Comparable Corpora", authors: "S. Pal, P. Pakray, A. Gelbukh, and J. van Genabith", venue: "Springer International Publishing", year: "2015", isTier1: false }
+        ]
  };
 
- function renderPublications(filter) {
-     const grid = document.getElementById('pub-grid');
-     grid.innerHTML = '';
-     let allPubs = [];
-     if (filter === 'all') {
-         allPubs = [...publications.journal, ...publications.conference, ...publications["book-chapters"]];
-     } else {
-         allPubs = publications[filter] || [];
-     }
-     allPubs.forEach(pub => {
-         const card = document.createElement('div');
-         card.className = 'pub-card';
-         card.innerHTML = `
-             <div class="pub-content">
-                 <h3 class="pub-title">${pub.title}</h3>
-                 <p class="pub-meta"><strong>Authors:</strong> ${pub.authors}</p>
-                 <p class="pub-meta"><strong>Venue:</strong> ${pub.venue}</p>
-                 <p class="pub-meta"><strong>Year:</strong> ${pub.year}</p>
-             </div>
-         `;
-         grid.appendChild(card);
-     });
- }
 
- document.addEventListener('DOMContentLoaded', () => {
-     const tabs = document.querySelectorAll('.tab');
-     tabs.forEach(tab => {
-         tab.addEventListener('click', () => {
-             tabs.forEach(t => t.classList.remove('active'));
-             tab.classList.add('active');
-             renderPublications(tab.dataset.tab);
-         });
-     });
+// --- Main Script Logic ---
+    function renderPublications(filter) {
+        const grid = document.getElementById('pub-grid');
+        grid.innerHTML = '';
+        let allPubs = [];
+        if (filter === 'all') {
+            allPubs = [...publications.journal, ...publications.conference, ...publications["book-chapters"]];
+        } else {
+            allPubs = publications[filter] || [];
+        }
+        allPubs.forEach(pub => {
+            const card = document.createElement('div');
+            card.className = `pub-card flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4 ${pub.isTier1 ? 'tier1' : ''}`;
 
-     const themeToggle = document.getElementById('theme-toggle');
-     themeToggle.addEventListener('click', () => {
-         document.body.classList.toggle('dark-mode');
-     });
+            // Create logo container and image
+            const logoContainer = document.createElement('div');
+            logoContainer.className = 'logo-container flex-shrink-0';
+            const logoImg = document.createElement('img');
+            logoImg.className = 'pub-logo rounded-full';
+            logoImg.src = getLogoUrl(pub.venue);
+            logoImg.alt = `${pub.venue} logo`;
+            logoContainer.appendChild(logoImg);
 
-     // Initial render
-     renderPublications('all');
- });
+            // Create content container
+            const pubContent = document.createElement('div');
+            pubContent.className = 'pub-content flex-grow p-0';
+            pubContent.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <h3 class="pub-title">
+                        ${pub.title} <a href="${getPublicLink(pub.title)}" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 text-blue-500 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-500">
+                        ${pub.isTier1 ? '<span class="text-yellow-400 dark:text-yellow-300">⭐</span>' : ''}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                           <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                           <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-5a1 1 0 10-2 0v5H5V7h5a1 1 0 000-2H5z" />
+                         </svg>
+                     </a>
+                        </h3>
+                    
+                </div>
+                <p class="pub-meta"><strong>Authors:</strong> ${pub.authors}</p>
+                <p class="pub-meta"><strong>Venue:</strong> ${pub.venue}</p>
+                <p class="pub-meta"><strong>Year:</strong> ${pub.year}</p>
+                   `;
+            
+            card.appendChild(logoContainer);
+            card.appendChild(pubContent);
+            grid.appendChild(card);
+        });
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderPublications(tab.dataset.tab);
+            });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Initial render
+        renderPublications('all');
+    });
  </script>
  </body>
  </html>
