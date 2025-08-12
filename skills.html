@@ -6,450 +6,575 @@
     <title>Santanu Pal - Skills</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="custom.css" rel="stylesheet">
     <style>
-       
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1a202c;
+            --secondary-text: #4a5568;
+            --link-color: #4c51bf;
+            --border-color: #e2e8f0;
+            --nav-bg: #ffffff;
+            --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --footer-bg: #f0f4f8;
+        }
+
+        .dark-mode {
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --secondary-text: #a0aec0;
+            --link-color: #63b3ed;
+            --border-color: #4a5568;
+            --nav-bg: #2d3748;
+            --nav-shadow: none;
+            --footer-bg: #2d3748;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .nav-profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+            box-shadow: var(--nav-shadow);
+            transition: background-color 0.3s;
+        }
+
+        nav a {
+            color: var(--secondary-text);
+        }
+
+        nav a:hover, .tab:hover {
+            color: var(--link-color);
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .dark-mode .skill-card {
+            box-shadow: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--link-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-description {
+            font-size: 0.875rem;
+            color: var(--secondary-text);
+        }
+
+        .skills-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skills-grid.active {
+            display: grid;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        
+        .tab.active {
+            border-color: var(--link-color);
+            color: var(--link-color);
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            background-color: var(--footer-bg);
+            border-radius: 6px;
+            margin-top: 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .soft-skills-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-badge {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 600;
+            color: var(--text-color);
+            transition: background-color 0.3s;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .dark-mode .skill-badge {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
 
         /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            .header {
-                margin-left: -15px;
-                margin-right: -15px;
-            }
             nav {
-                flex-direction: column; /* Stack nav items vertically on small screens */
-                align-items: flex-start;
-                padding: 15px;
-            }
-            nav ul {
                 flex-direction: column;
                 align-items: flex-start;
-                margin-top: 15px;
-                width: 100%;
             }
-            nav ul li {
-                margin: 5px 0;
-            }
-            .nav-left {
-                width: 100%;
-                justify-content: center;
-            }
-            .skill-item {
-                grid-template-columns: 1fr; /* Stack all items vertically */
-                align-items: flex-start;
-            }
-            .star-rating {
-                justify-content: flex-start; /* Align stars to the left */
-                margin-top: 5px; /* Add some space between skill name and stars */
-            }
-            .skill-applied-in {
-                margin-top: 5px; /* Add space below stars */
-            }
-        }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-            .header {
-                font-size: 1.75rem;
-                margin-left: -10px;
-                margin-right: -10px;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .skill-category-title {
-                font-size: 1.2rem;
-            }
-            .skill-name {
-                font-size: 0.95rem;
-            }
-            .star-icon {
-                width: 18px;
-                height: 18px;
+            nav ul {
+                margin-top: 1rem;
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
     <div class="container">
-        <!-- <header class="header">
-            <h1 class="header-title">My Skills</h1>
-        </header> -->
-
-        <nav>
-            <div class="nav-left">
+        <nav class="flex items-center justify-between py-6 px-4 bg-white rounded-lg shadow-md mb-8">
+            <div class="flex items-center space-x-4">
                 <a href="index.html">
                     <img src="santanuPal.jpeg" alt="Santanu Pal" class="nav-profile-image">
-                    </a>
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
             </div>
-            <ul>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="publication.html">Publications</a></li>
-                <li><a href="skills.html" class="active">Skills</a></li>
-                <li><a href="project.html">Projects</a></li>
-                <li><a href="index.html#cv">CV</a></li>
-                <li><a href="index.html#news">News</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+            <ul class="flex space-x-6">
+                <li><a href="index.html#about" class="text-gray-600 hover:text-blue-700 font-medium">About</a></li>
+                <li><a href="publication.html" class="text-gray-600 hover:text-blue-700 font-medium">Publications</a></li>
+                <li><a href="skills.html" class="text-blue-700 font-medium border-b-2 border-blue-700">Skills</a></li>
+                <li><a href="project.html" class="text-gray-600 hover:text-blue-700 font-medium">Projects</a></li>
+                <li><a href="index.html#cv" class="text-gray-600 hover:text-blue-700 font-medium">CV</a></li>
+                <li><a href="index.html#news" class="text-gray-600 hover:text-blue-700 font-medium">News</a></li>
+                <li><a href="index.html#contact" class="text-gray-600 hover:text-blue-700 font-medium">Contact</a></li>
             </ul>
         </nav>
 
         <section id="skills" class="mb-8">
-            <h2 class="section-title">Technical Expertise</h2>
+            <h2 class="text-3xl font-bold text-center mb-10">Technical Expertise</h2>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">Agentic AI</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Open AI SDK</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed AI agents for various NLP tasks.</span>
+            <div class="tab-container">
+                <div class="tab active" data-tab="all">All Skills</div>
+                <div class="tab" data-tab="agentic">Agentic AI</div>
+                <div class="tab" data-tab="programming">Programming</div>
+                <div class="tab" data-tab="deeplearning">Deep Learning</div>
+                <div class="tab" data-tab="libraries">Libraries & Tools</div>
+                <div class="tab" data-tab="nlp">NLP & Generative AI</div>
+            </div>
+
+            <div id="all" class="skills-grid active">
+                <div class="skill-card skill-agentic">
+                    <i class="fa-solid fa-microchip skill-icon"></i>
+                    <h4 class="skill-title">Open AI SDK</h4>
+                    <p class="skill-description">Developed AI agents for various NLP tasks.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Crew AI</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Built multi-agent systems for complex workflows.</span>
+                <div class="skill-card skill-agentic">
+                    <i class="fa-solid fa-users-gear skill-icon"></i>
+                    <h4 class="skill-title">Crew AI</h4>
+                    <p class="skill-description">Built multi-agent systems for complex workflows.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Langgraph</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Designed stateful multi-actor applications with LLMs.</span>
+                <div class="skill-card skill-agentic">
+                    <i class="fa-solid fa-diagram-project skill-icon"></i>
+                    <h4 class="skill-title">Langgraph</h4>
+                    <p class="skill-description">Designed stateful multi-actor applications with LLMs.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Autogen</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Implemented conversational agents for task automation.</span>
+                <div class="skill-card skill-agentic">
+                    <i class="fa-solid fa-robot skill-icon"></i>
+                    <h4 class="skill-title">Autogen</h4>
+                    <p class="skill-description">Implemented conversational agents for task automation.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">MCP</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Contributed to modular AI agent development.</span>
+                <div class="skill-card skill-agentic">
+                    <i class="fa-solid fa-puzzle-piece skill-icon"></i>
+                    <h4 class="skill-title">MCP</h4>
+                    <p class="skill-description">Contributed to modular AI agent development.</p>
+                </div>
+
+                <div class="skill-card skill-programming">
+                    <i class="fab fa-python skill-icon"></i>
+                    <h4 class="skill-title">Python</h4>
+                    <p class="skill-description">Primary language for ML, NLP, and AI development.</p>
+                </div>
+                <div class="skill-card skill-programming">
+                    <i class="fab fa-java skill-icon"></i>
+                    <h4 class="skill-title">Java</h4>
+                    <p class="skill-description">Used for backend development and data processing.</p>
+                </div>
+                <div class="skill-card skill-programming">
+                    <i class="fa-solid fa-database skill-icon"></i>
+                    <h4 class="skill-title">SQL</h4>
+                    <p class="skill-description">Managed and queried relational databases for projects.</p>
+                </div>
+                
+                <div class="skill-card skill-deeplearning">
+                    <i class="fa-solid fa-brain skill-icon"></i>
+                    <h4 class="skill-title">PyTorch</h4>
+                    <p class="skill-description">Built and trained deep learning models.</p>
+                </div>
+                <div class="skill-card skill-deeplearning">
+                    <i class="fa-solid fa-project-diagram skill-icon"></i>
+                    <h4 class="skill-title">TensorFlow</h4>
+                    <p class="skill-description">Developed and deployed machine learning models.</p>
+                </div>
+                <div class="skill-card skill-deeplearning">
+                    <i class="fa-solid fa-flask skill-icon"></i>
+                    <h4 class="skill-title">Flask</h4>
+                    <p class="skill-description">Developed web applications and APIs.</p>
+                </div>
+
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-calculator skill-icon"></i>
+                    <h4 class="skill-title">NumPy</h4>
+                    <p class="skill-description">Fundamental for numerical computing in data science.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-table skill-icon"></i>
+                    <h4 class="skill-title">Pandas</h4>
+                    <p class="skill-description">Used for data manipulation and analysis.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-chart-line skill-icon"></i>
+                    <h4 class="skill-title">Scikit-learn</h4>
+                    <p class="skill-description">Implemented various machine learning algorithms.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-book-open skill-icon"></i>
+                    <h4 class="skill-title">NLTK</h4>
+                    <p class="skill-description">Used for various NLP tasks like tokenization and parsing.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-feather-alt skill-icon"></i>
+                    <h4 class="skill-title">Hugging Face Transformers</h4>
+                    <p class="skill-description">Leveraged pre-trained models for various NLP applications.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-comment skill-icon"></i>
+                    <h4 class="skill-title">SpaCy</h4>
+                    <p class="skill-description">Efficiently processed and analyzed text data.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-link skill-icon"></i>
+                    <h4 class="skill-title">LangChain</h4>
+                    <p class="skill-description">Developed applications powered by LLMs.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fa-solid fa-book skill-icon"></i>
+                    <h4 class="skill-title">Gensim</h4>
+                    <p class="skill-description">Used for topic modeling and document similarity.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <h4 class="skill-title">Git</h4>
+                    <p class="skill-description">Version control for collaborative development.</p>
+                </div>
+                <div class="skill-card skill-libraries">
+                    <i class="fab fa-docker skill-icon"></i>
+                    <h4 class="skill-title">Docker</h4>
+                    <p class="skill-description">Containerized applications for consistent deployment.</p>
+                </div>
+
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-exchange-alt skill-icon"></i>
+                    <h4 class="skill-title">Sequence-to-Sequence Models</h4>
+                    <p class="skill-description">Used in machine translation and text summarization.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-search-plus skill-icon"></i>
+                    <h4 class="skill-title">Attention Mechanisms</h4>
+                    <p class="skill-description">Enhanced performance of neural networks in NLP.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-keyboard skill-icon"></i>
+                    <h4 class="skill-title">Language Modeling</h4>
+                    <p class="skill-description">Developed models for text generation and prediction.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-sync skill-icon"></i>
+                    <h4 class="skill-title">Transformers (BERT, GPT-3 etc.)</h4>
+                    <p class="skill-description">Core to many state-of-the-art NLP applications.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-highlighter skill-icon"></i>
+                    <h4 class="skill-title">Named Entity Recognition (NER)</h4>
+                    <p class="skill-description">Extracted key information from unstructured text.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-comment-dots skill-icon"></i>
+                    <h4 class="skill-title">Large Language Model (LLM)</h4>
+                    <p class="skill-description">Developed generative AI applications and models.</p>
+                </div>
+                <div class="skill-card skill-nlp">
+                    <i class="fa-solid fa-arrow-up-right-dots skill-icon"></i>
+                    <h4 class="skill-title">Reinforcement Learning (PPO, DPO, CPO)</h4>
+                    <p class="skill-description">Fine-tuned LLMs for specific behaviors and preferences.</p>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">Programming Languages</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Python</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Primary language for ML, NLP, and AI development.</span>
+            <div id="agentic" class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-microchip skill-icon"></i>
+                    <h4 class="skill-title">Open AI SDK</h4>
+                    <p class="skill-description">Developed AI agents for various NLP tasks.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Java</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Used for backend development and data processing.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-users-gear skill-icon"></i>
+                    <h4 class="skill-title">Crew AI</h4>
+                    <p class="skill-description">Built multi-agent systems for complex workflows.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">SQL</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Managed and queried relational databases for projects.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-diagram-project skill-icon"></i>
+                    <h4 class="skill-title">Langgraph</h4>
+                    <p class="skill-description">Designed stateful multi-actor applications with LLMs.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Flask</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed web applications and APIs.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-robot skill-icon"></i>
+                    <h4 class="skill-title">Autogen</h4>
+                    <p class="skill-description">Implemented conversational agents for task automation.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-puzzle-piece skill-icon"></i>
+                    <h4 class="skill-title">MCP</h4>
+                    <p class="skill-description">Contributed to modular AI agent development.</p>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">Deep Learning Frameworks</h3>
-                <div class="skill-item">
-                    <span class="skill-name">PyTorch</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Built and trained deep learning models.</span>
+            <div id="programming" class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-python skill-icon"></i>
+                    <h4 class="skill-title">Python</h4>
+                    <p class="skill-description">Primary language for ML, NLP, and AI development.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">TensorFlow</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed and deployed machine learning models.</span>
+                <div class="skill-card">
+                    <i class="fab fa-java skill-icon"></i>
+                    <h4 class="skill-title">Java</h4>
+                    <p class="skill-description">Used for backend development and data processing.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database skill-icon"></i>
+                    <h4 class="skill-title">SQL</h4>
+                    <p class="skill-description">Managed and queried relational databases for projects.</p>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">Libraries & Tools</h3>
-                <div class="skill-item">
-                    <span class="skill-name">NumPy</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Fundamental for numerical computing in data science.</span>
+            <div id="deeplearning" class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-brain skill-icon"></i>
+                    <h4 class="skill-title">PyTorch</h4>
+                    <p class="skill-description">Built and trained deep learning models.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Pandas</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Used for data manipulation and analysis.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-project-diagram skill-icon"></i>
+                    <h4 class="skill-title">TensorFlow</h4>
+                    <p class="skill-description">Developed and deployed machine learning models.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Scikit-learn</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Implemented various machine learning algorithms.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">NLTK</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Used for various NLP tasks like tokenization and parsing.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Hugging Face Transformers</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Leveraged pre-trained models for various NLP applications.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">SpaCy</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Efficiently processed and analyzed text data.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">LangChain</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed applications powered by LLMs.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Gensim</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Used for topic modeling and document similarity.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Git</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Version control for collaborative development.</span>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Docker</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Containerized applications for consistent deployment.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-flask skill-icon"></i>
+                    <h4 class="skill-title">Flask</h4>
+                    <p class="skill-description">Developed web applications and APIs.</p>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">NLP and Generative AI Techniques</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Sequence-to-Sequence Models</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Used in machine translation and text summarization.</span>
+            <div id="libraries" class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-calculator skill-icon"></i>
+                    <h4 class="skill-title">NumPy</h4>
+                    <p class="skill-description">Fundamental for numerical computing in data science.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Attention Mechanisms</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Enhanced performance of neural networks in NLP.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-table skill-icon"></i>
+                    <h4 class="skill-title">Pandas</h4>
+                    <p class="skill-description">Used for data manipulation and analysis.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Language Modeling</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed models for text generation and prediction.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-chart-line skill-icon"></i>
+                    <h4 class="skill-title">Scikit-learn</h4>
+                    <p class="skill-description">Implemented various machine learning algorithms.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Transformers (BERT, GPT-3 etc.)</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Core to many state-of-the-art NLP applications.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-book-open skill-icon"></i>
+                    <h4 class="skill-title">NLTK</h4>
+                    <p class="skill-description">Used for various NLP tasks like tokenization and parsing.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Named Entity Recognition (NER)</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Extracted key information from unstructured text.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-feather-alt skill-icon"></i>
+                    <h4 class="skill-title">Hugging Face Transformers</h4>
+                    <p class="skill-description">Leveraged pre-trained models for various NLP applications.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Large Language Model (LLM)</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Developed generative AI applications and models.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-comment skill-icon"></i>
+                    <h4 class="skill-title">SpaCy</h4>
+                    <p class="skill-description">Efficiently processed and analyzed text data.</p>
                 </div>
-                <div class="skill-item">
-                    <span class="skill-name">Reinforcement Learning (PPO, DPO, CPO)</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Fine-tuned LLMs for specific behaviors and preferences.</span>
+                <div class="skill-card">
+                    <i class="fa-solid fa-link skill-icon"></i>
+                    <h4 class="skill-title">LangChain</h4>
+                    <p class="skill-description">Developed applications powered by LLMs.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-book skill-icon"></i>
+                    <h4 class="skill-title">Gensim</h4>
+                    <p class="skill-description">Used for topic modeling and document similarity.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <h4 class="skill-title">Git</h4>
+                    <p class="skill-description">Version control for collaborative development.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-docker skill-icon"></i>
+                    <h4 class="skill-title">Docker</h4>
+                    <p class="skill-description">Containerized applications for consistent deployment.</p>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title">Skill Badges</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Problem Solving</span>
-                    <div class="star-rating">
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <span class="skill-applied-in">Addressed complex challenges in AI and NLP research.</span>
+            <div id="nlp" class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-exchange-alt skill-icon"></i>
+                    <h4 class="skill-title">Sequence-to-Sequence Models</h4>
+                    <p class="skill-description">Used in machine translation and text summarization.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-search-plus skill-icon"></i>
+                    <h4 class="skill-title">Attention Mechanisms</h4>
+                    <p class="skill-description">Enhanced performance of neural networks in NLP.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-keyboard skill-icon"></i>
+                    <h4 class="skill-title">Language Modeling</h4>
+                    <p class="skill-description">Developed models for text generation and prediction.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-sync skill-icon"></i>
+                    <h4 class="skill-title">Transformers (BERT, GPT-3 etc.)</h4>
+                    <p class="skill-description">Core to many state-of-the-art NLP applications.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-highlighter skill-icon"></i>
+                    <h4 class="skill-title">Named Entity Recognition (NER)</h4>
+                    <p class="skill-description">Extracted key information from unstructured text.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-comment-dots skill-icon"></i>
+                    <h4 class="skill-title">Large Language Model (LLM)</h4>
+                    <p class="skill-description">Developed generative AI applications and models.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-arrow-up-right-dots skill-icon"></i>
+                    <h4 class="skill-title">Reinforcement Learning (PPO, DPO, CPO)</h4>
+                    <p class="skill-description">Fine-tuned LLMs for specific behaviors and preferences.</p>
                 </div>
             </div>
 
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold mb-4">Skill Badges</h3>
+                <div class="soft-skills-section">
+                    <div class="skill-badge">Problem Solving</div>
+                </div>
+            </div>
         </section>
-
 
         <footer>
             &copy; 2024 Santanu Pal. All rights reserved.
         </footer>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggling
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const storedTheme = localStorage.getItem('theme');
+
+            if (storedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            const skillGrids = document.querySelectorAll('.skills-grid');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+
+                    // Remove active class from all tabs and content
+                    tabs.forEach(t => t.classList.remove('active'));
+                    skillGrids.forEach(grid => grid.classList.remove('active'));
+
+                    // Add active class to the clicked tab and its corresponding content
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
