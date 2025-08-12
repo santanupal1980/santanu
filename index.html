@@ -4,60 +4,320 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santanu Pal</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-       
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="custom.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1a202c;
+            --secondary-text: #4a5568;
+            --link-color: #4c51bf;
+            --border-color: #e2e8f0;
+            --nav-bg: #ffffff;
+            --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --footer-bg: #f0f4f8;
+        }
+
+        .dark-mode {
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --secondary-text: #a0aec0;
+            --link-color: #63b3ed;
+            --border-color: #4a5568;
+            --nav-bg: #2d3748;
+            --nav-shadow: none;
+            --footer-bg: #2d3748;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav-profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1rem;
+            background-color: var(--nav-bg);
+            border-radius: 0.5rem;
+            box-shadow: var(--nav-shadow);
+            margin-bottom: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--secondary-text);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--link-color);
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--link-color);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-text);
+            margin-top: 0.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1rem;
+            color: var(--secondary-text);
+            margin-top: 1rem;
+            max-width: 600px;
+        }
+        
+        .hero-summary {
+            font-size: 1rem;
+            color: var(--secondary-text);
+            margin-top: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .hero-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .hero-links a {
+            font-size: 1.5rem;
+            color: var(--secondary-text);
+            transition: color 0.2s;
+        }
+        
+        .hero-links a:hover {
+            color: var(--link-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .about-card {
+            box-shadow: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--link-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: var(--secondary-text);
+            line-height: 1.6;
+        }
+        
+        .about-more-link {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+
+        .cv-link {
+            display: inline-block;
+            background-color: var(--link-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .cv-link:hover {
+            background-color: #4347b5;
+        }
+        
+        .news-card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+        }
+
+        .dark-mode .news-card {
+            box-shadow: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            color: var(--secondary-text);
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .contact-list li {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-list a {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            background-color: var(--footer-bg);
+            border-radius: 6px;
+            margin-top: 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100">
     <div class="container">
-        <header class="hero">
-            <img src="santanuPal.jpeg" alt="Santanu Pal" class="hero-image">
-            <h1 class="hero-title">Santanu Pal</h1>
-            <p class="hero-subtitle">Senior Scientist | Computational Linguist | NLP & Generative AI Researcher</p>
-            <p class="hero-tagline" style="font-size: 1rem; color: #555;">
-                Designing ethical, multilingual, and behavior-aware AI that bridges research and real-world impact.
-            </p>
-            <p class="hero-summary">
-                Renowned for my work in Machine Translation, I am a Senior Scientist and NLP researcher bridging academia and industry. My expertise spans multilingual AI, persuasive and behavior-aware NLP, and Generative AI — advancing ethical, human-centric technologies across healthcare, law, and beyond.
-            </p>
-            <p class="hero-link">
-                    <a href="https://scholar.google.com/citations?user=bYP2jIgAAAAJ&hl=en" class="fa fa-graduation-cap" style='font-size:24px;'> |</a>
-                    <a href="https://www.linkedin.com/in/dr-santanu-pal-6511076a/" class="fa fa-linkedin" style='font-size:24px;'> |</a>
-                    <a href="#" class="fa fa-twitter" style='font-size:24px;'> |</a>
-                    <a href="#" class="fa fa-github" style='font-size:24px;'> |</a>
-
-                </p>
-        </header>
-
-         <nav>
-            <div class="nav-left">
+        <nav class="flex items-center justify-between py-6 px-4 bg-white rounded-lg shadow-md mb-8">
+            <div class="flex items-center space-x-4">
                 <a href="index.html">
                     <img src="santanuPal.jpeg" alt="Santanu Pal" class="nav-profile-image">
-                    </a>
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
             </div>
-            <ul>
+            <ul class="flex space-x-6">
                 <li><a href="index.html#about" class="active">About</a></li>
                 <li><a href="publication.html">Publications</a></li>
-                <li><a href="index.html#cv">CV</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="project.html">Projects</a></li>
+                <li><a href="index.html#cv">CV</a></li>
                 <li><a href="index.html#news">News</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
 
+        <header class="hero">
+            <img src="santanuPal.jpeg" alt="Santanu Pal" class="hero-image">
+            <h1 class="hero-title">Santanu Pal</h1>
+            <p class="hero-subtitle">Senior Scientist | Computational Linguist | NLP & Generative AI Researcher</p>
+            <p class="hero-tagline">
+                Transforming AI research into real-world impact: Expert in NLP, low-resource MT, and AI for healthcare. Driving innovation through ethical, interdisciplinary, and industry-ready AI solutions.
+            </p>
+            <p class="hero-summary">
+                I am a Research scientist specializing in Natural Language Processing (NLP), Machine Translation (MT), Generative AI (GEN AI) and Agentic AI. My research focuses on developing multilingual, human-centric AI systems for various domains. Since 2020, as a Lead Scientist at Wipro, I've led projects, collaborated academically, and secured a **US patent**. For more details about my work, explore my comprehensive Publications and leading Projects.
+            </p>
+            <div class="hero-links">
+                <a href="https://scholar.google.com/citations?user=bYP2jIgAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                <a href="https://www.linkedin.com/in/dr-santanu-pal-6511076a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
 
-        <section id="about" class="mb-8">
+        <section id="about" class="mb-12">
             <h2 class="section-title">About Me</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="about-card">
@@ -87,88 +347,42 @@
             </div>
         </section>
 
-        <section id="cv" class="mb-8">
+        <section id="cv" class="mb-12">
             <h2 class="section-title">Curriculum Vitae (CV)</h2>
             <div class="text-center">
-                <p class="mb-4">Download my full Curriculum Vitae for a detailed overview of my experience and qualifications.</p>
+                <p class="mb-4 text-gray-600 dark:text-gray-400">Download my full Curriculum Vitae for a detailed overview of my experience and qualifications.</p>
                 <a href="SantanuCV_academy.pdf" target="_blank" class="cv-link" download>Download CV (PDF)</a>
             </div>
         </section>
 
-        <section id="news" class="mb-8">
+        <section id="news" class="mb-12">
             <h2 class="section-title">News</h2>
-            <div class="container">
-                <div class="album py-5 bg-white">
-                    <div class="container">
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow">
-                                    <iframe class='embed-responsive-item' style="border: 0" src='http://qnlp.in/'></iframe>
-                                    <div class="card-body">
-                                        <p class="card-text">We are organizing Workshop at IJCNLP-AACL 2025: QuantumNLP</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                            <a href='http://qnlp.in/' type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Cite</button>
-                                            </div>
-                                            <small class="text-muted">9 mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- column -->
-
-                            <div class="col-md-4">
-                                <div class="card mb-4 box-shadow">
-                                    <iframe class='embed-responsive-item' style="border: 0" src='https://aclanthology.org/2020.acl-demos.37.pdf'></iframe>
-                                    <div class="card-body">
-                                        <p class="card-text">MMPE: A Multi-Modal Interface Using Handwriting, Touch Reordering,
-                        and Speech Commands for Post-Editing Machine Translation</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                            <a href='https://aclanthology.org/2020.acl-demos.37.pdf' type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Cite</button>
-                                            </div>
-                                            <small class="text-muted">9 mins</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- column -->
-                        </div>  
-            
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="news-card">
+                    <h3 class="news-title">New Workshop: QuantumNLP</h3>
+                    <p class="news-date">Dec 23-24, 2025</p>
+                    <p class="text-gray-600 dark:text-gray-400">I am organizing the QuantumNLP workshop under the 14th IJCNLP-AACL 2025 in Mumbai, India.</p>
+                </div>
+                <div class="news-card">
+                    <h3 class="news-title">WMT Workshops and Shared Tasks</h3>
+                    <p class="news-date">2019-2025</p>
+                    <p class="text-gray-600 dark:text-gray-400">Organizing SLT and IndicMT tasks with the Conference on Machine Translation (WMT).</p>
+                </div>
+                <div class="news-card">
+                    <h3 class="news-title">Published in Top-Tier Venues</h3>
+                    <p class="news-date">Ongoing</p>
+                    <p class="text-gray-600 dark:text-gray-400">My papers have been published in top venues like ACL, CHI, EACL, COLING, ECIR, and LREC.</p>
                 </div>
             </div>
-            <!-- <div class="news-list">
-                <div class="news-item">
-                    <h3 class="news-title">New Paper Accepted at ACL 2024</h3>
-                    <p class="news-date">May 20, 2024</p>
-                    <p>Our paper on "Advanced Neural Architectures for Cross-Lingual Transfer" has been accepted to the prestigious ACL 2024 conference. Looking forward to presenting our work!</p>
-                </div>
-                <div class="news-item">
-                    <h3 class="news-title">Invited Talk at XYZ University</h3>
-                    <p class="news-date">April 15, 2024</p>
-                    <p>Gave an invited talk on "The Future of Machine Translation Post-GPT" at XYZ University. It was a great discussion with faculty and students.</p>
-                </div>
-                <div class="news-item">
-                    <h3 class="news-title">Awarded Best Reviewer at EMNLP 2023</h3>
-                    <p class="news-date">December 10, 2023</p>
-                    <p>Honored to receive the Best Reviewer Award at EMNLP 2023 for my contributions to the peer-review process.</p>
-                </div>
-            </div> -->
         </section>
-
-       
 
         <section id="contact" class="mb-8">
             <h2 class="section-title">Contact</h2>
             <div class="contact-info">
                 <p>Feel free to reach out for collaborations or inquiries.</p>
                 <ul class="contact-list">
-                    <li>Email: <a href="mailto:santanu.pal.ju@gmail.com">santanu.pal</a></li>
-                    </ul>
+                    <li>Email: <a href="mailto:santanu.pal.ju@gmail.com">santanu.pal.ju@gmail.com</a></li>
+                </ul>
             </div>
         </section>
 
@@ -176,5 +390,26 @@
             &copy; 2024 Santanu Pal. All rights reserved.
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggling
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const storedTheme = localStorage.getItem('theme');
+
+            if (storedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
